@@ -8,6 +8,7 @@ import render from "./entry.ssr";
 
 const fetch = createQwikCity({ render, qwikCityPlan, manifest });
 
+export { fetch };
 export { fetch as onRequest };
 
 declare global {

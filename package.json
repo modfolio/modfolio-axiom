@@ -5,6 +5,10 @@
   "packageManager": "bun@1.2.4",
   "scripts": {
     "build": "cd apps/landing && bun run build",
-    "dev": "cd apps/landing && bun run dev"
+    "dev": "cd apps/landing && bun run dev",
+    "check": "cd apps/landing && bun run check",
+    "typecheck": "cd apps/landing && bun run typecheck",
+    "lint": "cd apps/landing && bun run lint",
+    "format": "cd apps/landing && bun run format"
   }
 }

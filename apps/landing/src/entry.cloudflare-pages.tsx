@@ -8,8 +8,7 @@ import render from "./entry.ssr";
 
 const fetch = createQwikCity({ render, qwikCityPlan, manifest });
 
-export { fetch };
-export { fetch as onRequest };
+export { fetch, fetch as onRequest };
 
 declare global {
 	interface QwikCityPlatform extends PlatformCloudflarePages {}

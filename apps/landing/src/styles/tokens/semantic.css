@@ -1,0 +1,34 @@
+@layer tokens {
+	:root {
+		/* ── Surfaces ── */
+		--color-surface-0: var(--gray-0);
+		--color-surface-1: var(--gray-2);
+		--color-surface-2: var(--gray-3);
+		--color-surface-3: var(--gray-4);
+
+		/* ── Text ── */
+		--color-text-primary: var(--gray-12);
+		--color-text-secondary: var(--gray-9);
+		--color-text-tertiary: var(--gray-7);
+		--color-text-inverse: var(--gray-0);
+
+		/* ── Borders ── */
+		--color-border-subtle: rgba(255, 255, 255, 0.05);
+		--color-border-default: rgba(255, 255, 255, 0.08);
+		--color-border-hover: rgba(255, 255, 255, 0.14);
+
+		/* ── Interactive ── */
+		--color-interactive-primary: var(--indigo-9);
+		--color-interactive-hover: var(--indigo-7);
+		--color-interactive-secondary: var(--amber-9);
+
+		/* ── Status ── */
+		--color-status-active: var(--green-7);
+		--color-status-pending: var(--amber-9);
+		--color-status-error: var(--red-7);
+
+		/* ── Layout ── */
+		--content-max-width: 960px;
+		--content-padding: var(--space-5);
+	}
+}

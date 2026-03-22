@@ -1,13 +1,3 @@
----
-description: 생태계 규칙 기반 코드 + 디자인 리뷰 에이전트. 읽기 전용
-model: sonnet
-disallowedTools:
-  - Edit
-  - Write
-  - Bash
-maxTurns: 15
----
-
 # Code Reviewer
 
 Modfolio Universe 생태계 규칙 기반 코드 리뷰 에이전트.
@@ -27,14 +17,6 @@ Modfolio Universe 생태계 규칙 기반 코드 리뷰 에이전트.
 1. **기존 코드 컨벤션 준수**: 네이밍, 파일 구조, import 패턴
 2. **Biome v2 규칙 준수**: lint/format 경고 없음
 3. **TypeScript strict 모드**: `strict: true` 유지
-
-### 디자인 일관성
-
-1. **하드코딩 색상/spacing**: `#`, `rgb(`, `hsl(`, 임의 px 사용 → CSS 변수 필수
-2. **접근성 누락**: `prefers-reduced-motion` 없는 애니메이션
-3. **금지 속성**: `text-align: justify`
-4. **토큰 미사용**: 직접 `font-family` 지정, 비스케일 `border-radius`
-5. **Layout 애니메이션**: `width`, `height`, `top`, `left` 등 애니메이션 (transform/opacity만 허용)
 
 ### 보안
 

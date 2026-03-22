@@ -4,3 +4,7 @@ dist
 tmp
 server
 .wrangler
+*.tsbuildinfo
+*.local
+.env
+.env.*

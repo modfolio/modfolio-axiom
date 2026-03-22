@@ -5,6 +5,11 @@
       "command": "bunx",
       "args": ["-y", "@upstash/context7-mcp@latest"]
     },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
     "github": {
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/",

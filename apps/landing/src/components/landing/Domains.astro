@@ -54,6 +54,24 @@
 	.domains {
 		padding-block: var(--space-12);
 		padding-inline: var(--content-padding);
+		position: relative;
+	}
+
+	.domains::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
 	}
 
 	.domains__inner {
@@ -93,6 +111,7 @@
 	.domain-card:hover {
 		border-color: var(--color-border-accent);
 		box-shadow: var(--shadow-glow);
+		background: var(--color-surface-2);
 	}
 
 	.domain-card__number {
@@ -114,14 +133,13 @@
 	.domain-card__desc {
 		font-family: var(--font-ui);
 		font-size: var(--text-sm);
-		color: var(--color-text-secondary);
+		color: var(--color-text-tertiary);
 		line-height: var(--leading-normal);
-		opacity: 0;
-		transition: opacity var(--dur-base) var(--ease-out);
+		transition: color var(--dur-base) var(--ease-out);
 	}
 
 	.domain-card:hover .domain-card__desc {
-		opacity: 1;
+		color: var(--color-text-secondary);
 	}
 
 	@media (max-width: 768px) {

@@ -40,6 +40,24 @@
 <style>
 	.steps {
 		padding-block: var(--space-12);
+		position: relative;
+	}
+
+	.steps::before {
+		content: "";
+		position: absolute;
+		top: var(--space-12);
+		left: clamp(1rem, 4vw, 2rem);
+		bottom: var(--space-12);
+		width: 1px;
+		background: linear-gradient(
+			180deg,
+			transparent,
+			var(--color-border-accent) 30%,
+			var(--color-border-accent) 70%,
+			transparent
+		);
+		opacity: 0.4;
 	}
 
 	.steps__inner {

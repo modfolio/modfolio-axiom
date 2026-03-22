@@ -3,5 +3,24 @@
 	"name": "modfolio-axiom",
 	"compatibility_date": "2025-01-01",
 	"compatibility_flags": ["nodejs_compat"],
-	"pages_build_output_dir": "dist"
+	"pages_build_output_dir": "dist",
+	// Observability — CF Automatic Tracing + OTLP → SigNoz
+	"observability": {
+		"traces": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"destinations": [
+				"modfolio-signoz"
+			],
+			"persist": false
+		},
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"destinations": [
+				"modfolio-signoz-logs"
+			],
+			"persist": false
+		}
+	}
 }

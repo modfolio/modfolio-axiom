@@ -4,11 +4,14 @@
   "workspaces": ["apps/*"],
   "packageManager": "bun@1.2.4",
   "scripts": {
-    "build": "cd apps/landing && bun run build",
-    "dev": "cd apps/landing && bun run dev",
-    "check": "cd apps/landing && bun run check",
-    "typecheck": "cd apps/landing && bun run typecheck",
-    "lint": "cd apps/landing && bun run lint",
-    "format": "cd apps/landing && bun run format"
+    "dev": "cd apps/app && bun run dev",
+    "dev:landing": "cd apps/landing && bun run dev",
+    "build": "cd apps/landing && bun run build && cd ../../apps/app && bun run build",
+    "build:landing": "cd apps/landing && bun run build",
+    "build:app": "cd apps/app && bun run build",
+    "check": "cd apps/app && bun run check",
+    "typecheck": "cd apps/app && bun run typecheck",
+    "lint": "cd apps/app && bun run lint",
+    "format": "cd apps/app && bun run format"
   }
 }

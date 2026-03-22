@@ -1,0 +1,15 @@
+@layer tokens {
+	:root {
+		/* ── Axiom brand gradient ── */
+		--accent-gradient: linear-gradient(135deg, var(--indigo-9), var(--amber-9));
+		--accent-gradient-text: linear-gradient(135deg, var(--indigo-11), var(--amber-11));
+		--accent-gradient-subtle: linear-gradient(135deg, var(--indigo-5), var(--amber-5));
+
+		/* ── Ambient glow ── */
+		--glow-primary: var(--indigo-5);
+		--glow-secondary: var(--amber-5);
+		--glow-opacity: 0.06;
+		--glow-blur: 120px;
+		--glow-size: 600px;
+	}
+}

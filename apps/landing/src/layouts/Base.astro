@@ -1,0 +1,35 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = "Modfolio Axiom", description = "테크놀로지 & 모빌리티 그룹" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Master Typekit (fmh4fod) -->
+		<link rel="preconnect" href="https://use.typekit.net" />
+		<link rel="stylesheet" href="https://use.typekit.net/fmh4fod.css" />
+
+		<!-- Pretendard — Korean sans-serif fallback -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+		/>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	@import "../styles/global.css";
+</style>

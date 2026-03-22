@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { title = "Modfolio Axiom", description = "테크놀로지 & 모빌리티 그룹" } = Astro.props;
+const canonicalUrl = "https://axiom.modfolio.io";
 ---
 
 <!doctype html>
@@ -14,9 +15,18 @@ const { title = "Modfolio Axiom", description = "테크놀로지 & 모빌리티 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="theme-color" content="#fafafd" />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:locale" content="ko_KR" />
 
 		<!-- Master Typekit (fmh4fod) -->
-		<link rel="preconnect" href="https://use.typekit.net" />
+		<link rel="preconnect" href="https://use.typekit.net" crossorigin />
 		<link rel="stylesheet" href="https://use.typekit.net/fmh4fod.css" />
 
 		<!-- Pretendard — Korean sans-serif fallback -->
@@ -26,7 +36,32 @@ const { title = "Modfolio Axiom", description = "테크놀로지 & 모빌리티 
 		/>
 	</head>
 	<body>
+		<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 		<slot />
+		<div class="grain-overlay" aria-hidden="true"></div>
+
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", () => {
+				const reveals = document.querySelectorAll(".reveal");
+				if (!reveals.length) return;
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						for (const entry of entries) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible");
+								observer.unobserve(entry.target);
+							}
+						}
+					},
+					{ threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+				);
+
+				for (const el of reveals) {
+					observer.observe(el);
+				}
+			});
+		</script>
 	</body>
 </html>
 

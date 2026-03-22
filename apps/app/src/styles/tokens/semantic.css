@@ -2,29 +2,31 @@
 	:root {
 		/* ── Surfaces ── */
 		--color-surface-0: var(--gray-0);
-		--color-surface-1: var(--gray-2);
-		--color-surface-2: var(--gray-3);
-		--color-surface-3: var(--gray-4);
+		--color-surface-1: #ffffff;
+		--color-surface-2: var(--gray-1);
+		--color-surface-3: var(--gray-2);
+		--color-surface-code: var(--gray-11);
 
 		/* ── Text ── */
-		--color-text-primary: var(--gray-12);
-		--color-text-secondary: var(--gray-9);
-		--color-text-tertiary: var(--gray-7);
-		--color-text-inverse: var(--gray-0);
+		--color-text-primary: var(--gray-11);
+		--color-text-secondary: var(--gray-8);
+		--color-text-tertiary: var(--gray-6);
+		--color-text-inverse: #ffffff;
+		--color-text-code: var(--gray-0);
 
 		/* ── Borders ── */
-		--color-border-subtle: rgba(255, 255, 255, 0.05);
-		--color-border-default: rgba(255, 255, 255, 0.08);
-		--color-border-hover: rgba(255, 255, 255, 0.14);
+		--color-border-subtle: rgba(0, 0, 0, 0.04);
+		--color-border-default: rgba(0, 0, 0, 0.08);
+		--color-border-hover: rgba(0, 0, 0, 0.14);
 
 		/* ── Interactive ── */
 		--color-interactive-primary: var(--indigo-9);
 		--color-interactive-hover: var(--indigo-7);
-		--color-interactive-secondary: var(--amber-9);
+		--color-interactive-secondary: var(--amber-7);
 
 		/* ── Status ── */
 		--color-status-active: var(--green-7);
-		--color-status-pending: var(--amber-9);
+		--color-status-pending: var(--amber-7);
 		--color-status-error: var(--red-7);
 
 		/* ── Layout ── */

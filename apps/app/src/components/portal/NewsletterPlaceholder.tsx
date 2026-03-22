@@ -2,76 +2,100 @@ import { component$, useStylesScoped$ } from "@builder.io/qwik";
 
 export const NewsletterPlaceholder = component$(() => {
 	useStylesScoped$(`
-		.newsletter {
-			margin-top: var(--space-10);
+		.news {
+			margin-bottom: var(--space-8);
 		}
 
-		.newsletter__label {
+		.news__header {
+			display: flex;
+			align-items: baseline;
+			gap: var(--space-3);
+			margin-bottom: var(--space-4);
+		}
+
+		.news__label {
 			font-family: var(--font-ui);
 			font-size: var(--text-xs);
-			font-weight: 500;
+			font-weight: 600;
 			text-transform: uppercase;
-			letter-spacing: 0.1em;
+			letter-spacing: var(--tracking-wide);
 			color: var(--color-text-tertiary);
-			margin-bottom: var(--space-4);
 		}
 
-		.newsletter__grid {
+		.news__source {
+			font-family: var(--font-code);
+			font-size: 11px;
+			color: var(--color-text-tertiary);
+			opacity: 0.7;
+		}
+
+		.news__grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 			gap: var(--space-4);
-			margin-bottom: var(--space-4);
 		}
 
-		.newsletter__ghost {
+		.news__slot {
+			display: flex;
+			align-items: flex-start;
+			gap: var(--space-4);
 			background: var(--color-surface-1);
-			border: 1px dashed var(--color-border-subtle);
+			border: 1px solid var(--color-border-subtle);
 			border-radius: var(--radius-3);
 			padding: var(--space-5);
-			opacity: 0.5;
+			box-shadow: var(--shadow-1);
 		}
 
-		.newsletter__ghost-bar {
-			height: 12px;
-			background: var(--color-surface-3);
-			border-radius: var(--radius-1);
-			margin-bottom: var(--space-3);
+		.news__slot-number {
+			font-family: var(--font-code);
+			font-size: var(--text-2xl);
+			font-weight: 700;
+			color: var(--color-border-default);
+			line-height: 1;
+			flex-shrink: 0;
+			user-select: none;
 		}
 
-		.newsletter__ghost-bar--short {
-			width: 60%;
+		.news__slot-content {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-1);
 		}
 
-		.newsletter__ghost-bar--long {
-			width: 90%;
-		}
-
-		.newsletter__ghost-bar--medium {
-			width: 75%;
-			margin-bottom: 0;
-		}
-
-		.newsletter__hint {
+		.news__slot-title {
 			font-family: var(--font-ui);
-			font-size: var(--text-xs);
+			font-size: var(--text-sm);
+			font-weight: 500;
 			color: var(--color-text-tertiary);
-			font-style: italic;
+		}
+
+		.news__slot-meta {
+			font-family: var(--font-code);
+			font-size: 11px;
+			color: var(--color-text-tertiary);
+			opacity: 0.6;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
 		}
 	`);
 
 	return (
-		<section class="newsletter">
-			<span class="newsletter__label">Modfolio Press 뉴스레터</span>
-			<div class="newsletter__grid">
+		<section class="news">
+			<div class="news__header">
+				<span class="news__label">Axiom Dispatch</span>
+				<span class="news__source">via Modfolio Press</span>
+			</div>
+			<div class="news__grid">
 				{[1, 2, 3].map((i) => (
-					<div class="newsletter__ghost" key={i}>
-						<div class="newsletter__ghost-bar newsletter__ghost-bar--short" />
-						<div class="newsletter__ghost-bar newsletter__ghost-bar--long" />
-						<div class="newsletter__ghost-bar newsletter__ghost-bar--medium" />
+					<div class="news__slot" key={i}>
+						<span class="news__slot-number">{String(i).padStart(2, "0")}</span>
+						<div class="news__slot-content">
+							<span class="news__slot-title">Article placeholder</span>
+							<span class="news__slot-meta">Awaiting publication</span>
+						</div>
 					</div>
 				))}
 			</div>
-			<span class="newsletter__hint">곧 Press 매거진에서 최신 기사가 여기에 표시됩니다</span>
 		</section>
 	);
 });

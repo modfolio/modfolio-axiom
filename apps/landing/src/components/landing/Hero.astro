@@ -1,0 +1,196 @@
+<!-- Hero Section — PAS (Problem → Agitate → Solution) -->
+<section class="hero dot-bg">
+	<div class="hero__content">
+		<span class="section-label">Axiom</span>
+		<h1 class="hero__heading">
+			기술은 이동하지 않으면<br />의미가 없다
+		</h1>
+		<p class="hero__tagline">Technology & Mobility</p>
+		<p class="hero__desc">
+			수많은 디지털 도구 사이에서 정작 우리의 움직임은 단절되어 있습니다.
+			파편화된 시스템, 보이지 않는 사각지대.
+			Axiom은 기술이 사람과 함께 이동하는 세계를 설계합니다.
+		</p>
+		<div class="hero__cta-group">
+			<a href="https://nexus.modfolio.io" class="hero__cta">포탈로 이동하기</a>
+			<a href="#capabilities" class="hero__ghost">
+				아키텍처 보기
+				<span class="hero__arrow" aria-hidden="true">-&gt;</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="hero__grid" aria-hidden="true">
+		<div class="hero__cell hero__cell--highlight"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell hero__cell--accent"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell"></div>
+		<div class="hero__cell hero__cell--dim"></div>
+		<div class="hero__cell"></div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 100dvh;
+		padding: var(--space-6) var(--content-padding);
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+		gap: var(--space-8);
+		position: relative;
+	}
+
+	.hero__content {
+		flex: 1;
+		max-width: 540px;
+	}
+
+	.hero__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-5xl);
+		font-weight: 700;
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+		background: var(--accent-gradient-text);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin-bottom: var(--space-4);
+	}
+
+	.hero__tagline {
+		font-family: var(--font-marketing);
+		font-size: var(--text-lg);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-wide);
+		color: var(--color-text-tertiary);
+		margin-bottom: var(--space-4);
+	}
+
+	.hero__desc {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		color: var(--color-text-secondary);
+		max-width: 36ch;
+		line-height: var(--leading-relaxed);
+		margin-bottom: var(--space-8);
+	}
+
+	.hero__cta-group {
+		display: flex;
+		align-items: center;
+		gap: var(--space-5);
+		flex-wrap: wrap;
+	}
+
+	.hero__cta {
+		display: inline-flex;
+		align-items: center;
+		padding: var(--space-3) var(--space-6);
+		background: var(--color-interactive-primary);
+		border-radius: var(--radius-1);
+		color: var(--color-text-inverse);
+		font-family: var(--font-ui);
+		font-size: var(--text-base);
+		font-weight: 600;
+		transition:
+			background 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	.hero__cta:hover {
+		background: var(--color-interactive-hover);
+		transform: translateY(-1px);
+	}
+
+	.hero__ghost {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-secondary);
+		border: 1px solid var(--color-border-default);
+		padding: var(--space-2) var(--space-5);
+		border-radius: var(--radius-1);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__ghost:hover {
+		color: var(--color-text-primary);
+		border-color: var(--color-border-hover);
+	}
+
+	.hero__arrow {
+		font-family: var(--font-code);
+		font-size: var(--text-xs);
+		transition: transform 0.15s ease;
+	}
+
+	.hero__ghost:hover .hero__arrow {
+		transform: translateX(3px);
+	}
+
+	/* CSS-only 4x4 grid diagram */
+	.hero__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2px;
+		width: 240px;
+		flex-shrink: 0;
+		opacity: 0.5;
+	}
+
+	.hero__cell {
+		aspect-ratio: 1;
+		border: 1px solid var(--color-border-default);
+		border-radius: 2px;
+		background: transparent;
+	}
+
+	.hero__cell--highlight {
+		background: var(--indigo-3);
+		border-color: var(--indigo-5);
+	}
+
+	.hero__cell--accent {
+		background: var(--amber-3);
+		border-color: var(--amber-5);
+	}
+
+	.hero__cell--dim {
+		background: var(--color-surface-2);
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			flex-direction: column;
+			justify-content: center;
+			text-align: left;
+			padding-top: var(--space-12);
+		}
+
+		.hero__grid {
+			display: none;
+		}
+
+		.hero__heading {
+			font-size: var(--text-4xl);
+		}
+	}
+</style>

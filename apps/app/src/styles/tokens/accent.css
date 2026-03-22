@@ -1,15 +1,14 @@
 @layer tokens {
 	:root {
-		/* ── Axiom brand gradient ── */
-		--accent-gradient: linear-gradient(135deg, var(--indigo-9), var(--amber-9));
-		--accent-gradient-text: linear-gradient(135deg, var(--indigo-11), var(--amber-11));
-		--accent-gradient-subtle: linear-gradient(135deg, var(--indigo-5), var(--amber-5));
+		/* ── Brand gradient ── */
+		--accent-gradient: linear-gradient(135deg, var(--indigo-9), var(--indigo-7));
+		--accent-gradient-text: linear-gradient(135deg, var(--indigo-11), var(--indigo-9));
+		--accent-gradient-warm: linear-gradient(135deg, var(--indigo-9), var(--amber-7));
+		--accent-gradient-subtle: linear-gradient(135deg, var(--indigo-3), var(--amber-3));
 
-		/* ── Ambient glow ── */
-		--glow-primary: var(--indigo-5);
-		--glow-secondary: var(--amber-5);
-		--glow-opacity: 0.06;
-		--glow-blur: 120px;
-		--glow-size: 600px;
+		/* ── Dot grid (tech motif) ── */
+		--dot-color: var(--gray-4);
+		--dot-size: 1px;
+		--dot-gap: 24px;
 	}
 }

@@ -1,0 +1,54 @@
+@layer utilities {
+	@keyframes ax-reveal {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes ax-blink {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes ax-dot-drift {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: var(--dot-gap) var(--dot-gap);
+		}
+	}
+
+	.reveal {
+		opacity: 0;
+	}
+
+	.reveal.visible {
+		animation: ax-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		animation-delay: var(--reveal-delay, 0s);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		.reveal {
+			opacity: 1;
+		}
+
+		.reveal.visible {
+			animation: none;
+		}
+	}
+}

@@ -1,38 +1,38 @@
 @layer tokens {
 	:root {
-		/* ── Neutrals (blue-tinted dark) ── */
-		--gray-0: #07070d;
-		--gray-1: #0a0a12;
-		--gray-2: #101018;
-		--gray-3: #16161f;
-		--gray-4: #1c1c27;
-		--gray-5: #252530;
-		--gray-6: #35354a;
-		--gray-7: #52526e;
-		--gray-8: #8080a0;
-		--gray-9: #a8a8c0;
-		--gray-10: #cfcfe0;
-		--gray-11: #e8e8f0;
-		--gray-12: #f5f5fa;
+		/* ── Neutrals (cool blue-tinted light) ── */
+		--gray-0: #fafafd;
+		--gray-1: #f4f4f9;
+		--gray-2: #ededf4;
+		--gray-3: #e4e4ee;
+		--gray-4: #d4d4e2;
+		--gray-5: #b8b8cc;
+		--gray-6: #9090aa;
+		--gray-7: #6e6e8a;
+		--gray-8: #4e4e68;
+		--gray-9: #353548;
+		--gray-10: #222233;
+		--gray-11: #141422;
+		--gray-12: #0a0a14;
 
 		/* ── Indigo axis (technology) ── */
-		--indigo-3: #2a2a5e;
-		--indigo-5: #4040a0;
-		--indigo-7: #6b6bdf;
-		--indigo-9: #a0aaff;
-		--indigo-11: #cdd2ff;
+		--indigo-3: #e8e8ff;
+		--indigo-5: #818cf8;
+		--indigo-7: #6366f1;
+		--indigo-9: #4f46e5;
+		--indigo-11: #3730a3;
 
 		/* ── Amber axis (warmth / mobility) ── */
-		--amber-3: #4a3a10;
-		--amber-5: #8a6a1a;
-		--amber-7: #c49a2a;
-		--amber-9: #ffd97a;
-		--amber-11: #ffeebb;
+		--amber-3: #fef3c7;
+		--amber-5: #f59e0b;
+		--amber-7: #d97706;
+		--amber-9: #b45309;
+		--amber-11: #78350f;
 
 		/* ── Status ── */
-		--green-7: #4ade80;
-		--red-7: #f87171;
-		--blue-7: #60a5fa;
+		--green-7: #16a34a;
+		--red-7: #dc2626;
+		--blue-7: #2563eb;
 
 		/* ── Spacing (8pt grid) ── */
 		--space-1: 0.25rem;
@@ -55,9 +55,9 @@
 		--radius-4: 16px;
 		--radius-pill: 999px;
 
-		/* ── Shadows (dark theme) ── */
-		--shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5);
-		--shadow-2: 0 4px 12px rgba(0, 0, 0, 0.4);
-		--shadow-3: 0 8px 30px rgba(0, 0, 0, 0.4);
+		/* ── Shadows (light theme) ── */
+		--shadow-1: 0 1px 3px rgba(10, 10, 20, 0.06);
+		--shadow-2: 0 4px 12px rgba(10, 10, 20, 0.08);
+		--shadow-3: 0 8px 24px rgba(10, 10, 20, 0.1);
 	}
 }

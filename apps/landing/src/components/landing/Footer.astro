@@ -1,0 +1,139 @@
+<!-- CTA + Footer -->
+<section class="cta reveal">
+	<div class="cta__card">
+		<h2 class="cta__heading">함께 움직이는 기술</h2>
+		<p class="cta__desc">Modfolio Connect 계정 하나로 Axiom의 모든 서비스에 접근하세요.</p>
+		<a href="https://nexus.modfolio.io" class="cta__primary">포탈로 이동하기</a>
+		<span class="cta__badge">axiom.modfolio.io</span>
+	</div>
+</section>
+
+<footer class="footer">
+	<hr class="footer__rule" />
+	<div class="footer__inner">
+		<span class="footer__copyright">&copy; 2026 Modfolio. All rights reserved.</span>
+		<nav class="footer__links" aria-label="Ecosystem links">
+			<a href="https://modfolio.io" class="footer__link" target="_blank" rel="noopener">Modfolio</a>
+			<a href="https://connect.modfolio.io" class="footer__link" target="_blank" rel="noopener">Connect</a>
+			<a href="https://nexus.modfolio.io" class="footer__link" target="_blank" rel="noopener">Portal</a>
+		</nav>
+	</div>
+</footer>
+
+<style>
+	.cta {
+		padding: var(--space-12) var(--content-padding);
+		display: flex;
+		justify-content: center;
+	}
+
+	.cta__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		background: var(--color-surface-1);
+		border: 1px solid var(--color-border-subtle);
+		border-radius: var(--radius-4);
+		padding: var(--space-10) var(--space-8);
+		box-shadow: var(--shadow-1);
+		max-width: 520px;
+		width: 100%;
+	}
+
+	.cta__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		line-height: var(--leading-tight);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-4);
+	}
+
+	.cta__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-base);
+		color: var(--color-text-secondary);
+		max-width: 40ch;
+		line-height: var(--leading-normal);
+		margin-bottom: var(--space-8);
+	}
+
+	.cta__primary {
+		display: inline-flex;
+		align-items: center;
+		padding: var(--space-3) var(--space-7);
+		background: var(--color-interactive-primary);
+		border-radius: var(--radius-1);
+		color: var(--color-text-inverse);
+		font-family: var(--font-ui);
+		font-size: var(--text-base);
+		font-weight: 600;
+		transition:
+			background 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	.cta__primary:hover {
+		background: var(--color-interactive-hover);
+		transform: translateY(-1px);
+	}
+
+	.cta__badge {
+		margin-top: var(--space-5);
+		font-family: var(--font-code);
+		font-size: var(--text-xs);
+		color: var(--color-text-tertiary);
+		letter-spacing: 0.02em;
+	}
+
+	/* Footer */
+	.footer {
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+		padding: 0 var(--content-padding) var(--space-6);
+	}
+
+	.footer__rule {
+		width: 100%;
+		height: 1px;
+		background: var(--color-border-subtle);
+		border: none;
+		margin-bottom: var(--space-6);
+	}
+
+	.footer__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.footer__copyright {
+		font-family: var(--font-ui);
+		font-size: var(--text-xs);
+		color: var(--color-text-tertiary);
+	}
+
+	.footer__links {
+		display: flex;
+		gap: var(--space-4);
+	}
+
+	.footer__link {
+		font-family: var(--font-ui);
+		font-size: var(--text-xs);
+		color: var(--color-text-tertiary);
+		transition: color 0.15s ease;
+	}
+
+	.footer__link:hover {
+		color: var(--color-text-secondary);
+	}
+
+	@media (max-width: 640px) {
+		.footer__inner {
+			flex-direction: column;
+			gap: var(--space-3);
+		}
+	}
+</style>

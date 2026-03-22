@@ -4,3 +4,5 @@
 @import "./tokens/semantic.css";
 @import "./tokens/accent.css";
 @import "./typography.css";
+@import "./animations.css";
+@import "./utilities.css";

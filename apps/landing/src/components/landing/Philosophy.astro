@@ -1,0 +1,96 @@
+<!-- Philosophy Section — Editorial authority -->
+<section class="philosophy reveal">
+	<hr class="philosophy__rule" />
+	<div class="philosophy__layout">
+		<div class="philosophy__main">
+			<span class="section-label">Philosophy</span>
+			<h2 class="philosophy__heading">Technology with Purpose</h2>
+			<p class="philosophy__body">
+				기술이 사람을 이해하지 못하면, 그것은 장식에 불과합니다.
+				Axiom은 기술이 삶의 이동 속에 자연스럽게 녹아드는 순간을 설계합니다.
+				스마트 디바이스의 나열이 아니라, 움직임 그 자체를 이해하는 기술.
+			</p>
+		</div>
+		<aside class="philosophy__quote">
+			<blockquote>
+				<p>
+					"Each subsidiary app operates as an independent brand
+					with its own technology stack &mdash; connected only through
+					SSO tokens, data contracts, and webhook APIs."
+				</p>
+				<footer class="philosophy__attribution">
+					&mdash; House of Brands Principle
+				</footer>
+			</blockquote>
+		</aside>
+	</div>
+</section>
+
+<style>
+	.philosophy {
+		padding: var(--space-12) var(--content-padding);
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+	}
+
+	.philosophy__rule {
+		width: 48px;
+		height: 2px;
+		background: var(--accent-gradient-warm);
+		margin-bottom: var(--space-8);
+		border: none;
+	}
+
+	.philosophy__layout {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr;
+		gap: var(--space-10);
+		align-items: start;
+	}
+
+	.philosophy__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: 700;
+		line-height: var(--leading-snug);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-5);
+	}
+
+	.philosophy__body {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+		max-width: var(--measure);
+	}
+
+	.philosophy__quote blockquote {
+		border-left: 2px solid var(--color-interactive-primary);
+		padding-left: var(--space-5);
+	}
+
+	.philosophy__quote p {
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		font-style: italic;
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+		margin-bottom: var(--space-3);
+	}
+
+	.philosophy__attribution {
+		font-family: var(--font-code);
+		font-size: var(--text-xs);
+		color: var(--color-text-tertiary);
+		letter-spacing: var(--tracking-wide);
+	}
+
+	@media (max-width: 768px) {
+		.philosophy__layout {
+			grid-template-columns: 1fr;
+			gap: var(--space-8);
+		}
+	}
+</style>

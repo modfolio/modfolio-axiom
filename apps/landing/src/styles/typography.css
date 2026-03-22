@@ -37,7 +37,7 @@
 	}
 
 	:root {
-		/* ── Font stacks with CLS fallbacks ── */
+		/* ── Font stacks ── */
 		--font-display: "goldenbook", "Goldenbook Fallback", "sandoll-jebi2", "Noto Serif KR", serif;
 		--font-body:
 			"freight-text-pro", "FreightText Fallback", "sandoll-myeongjoneo1", "Noto Serif KR", serif;
@@ -69,6 +69,7 @@
 		/* ── Letter spacing ── */
 		--tracking-tight: -0.02em;
 		--tracking-normal: 0;
+		--tracking-label: 0.04em;
 		--tracking-wide: 0.06em;
 		--tracking-widest: 0.12em;
 

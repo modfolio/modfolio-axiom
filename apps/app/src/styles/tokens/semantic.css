@@ -2,32 +2,50 @@
 	:root {
 		/* ── Surfaces ── */
 		--color-surface-0: var(--gray-0);
-		--color-surface-1: #ffffff;
-		--color-surface-2: var(--gray-1);
-		--color-surface-3: var(--gray-2);
-		--color-surface-code: var(--gray-11);
+		--color-surface-1: #111122;
+		--color-surface-2: #191930;
+		--color-surface-3: #1e1e3a;
+		--color-surface-code: #0d0d1a;
 
 		/* ── Text ── */
-		--color-text-primary: var(--gray-11);
-		--color-text-secondary: var(--gray-8);
-		--color-text-tertiary: var(--gray-6);
-		--color-text-inverse: #ffffff;
-		--color-text-code: var(--gray-0);
+		--color-text-primary: var(--gray-12);
+		--color-text-secondary: var(--gray-9);
+		--color-text-tertiary: var(--gray-7);
+		--color-text-inverse: var(--gray-0);
+		--color-text-code: var(--gray-10);
+		--color-text-accent: var(--indigo-5);
 
 		/* ── Borders ── */
-		--color-border-subtle: rgba(0, 0, 0, 0.04);
-		--color-border-default: rgba(0, 0, 0, 0.08);
-		--color-border-hover: rgba(0, 0, 0, 0.14);
+		--color-border-subtle: rgba(255, 255, 255, 0.04);
+		--color-border-default: rgba(255, 255, 255, 0.06);
+		--color-border-hover: rgba(255, 255, 255, 0.12);
+		--color-border-accent: rgba(129, 140, 248, 0.3);
 
 		/* ── Interactive ── */
-		--color-interactive-primary: var(--indigo-9);
+		--color-interactive-primary: var(--indigo-5);
 		--color-interactive-hover: var(--indigo-7);
-		--color-interactive-secondary: var(--amber-7);
+		--color-interactive-muted: rgba(129, 140, 248, 0.12);
+		--color-interactive-secondary: var(--amber-5);
 
 		/* ── Status ── */
 		--color-status-active: var(--green-7);
-		--color-status-pending: var(--amber-7);
+		--color-status-active-muted: rgba(52, 211, 153, 0.12);
+		--color-status-pending: var(--amber-5);
+		--color-status-pending-muted: rgba(245, 158, 11, 0.12);
 		--color-status-error: var(--red-7);
+
+		/* ── Card system ── */
+		--card-padding: var(--space-5);
+		--card-radius: var(--radius-3);
+		--card-border: 1px solid var(--color-border-default);
+		--card-bg: var(--color-surface-1);
+
+		/* ── Section label system ── */
+		--section-label-size: var(--text-xs);
+		--section-label-weight: 600;
+		--section-label-tracking: var(--tracking-wide);
+		--section-label-color: var(--color-text-tertiary);
+		--section-gap: var(--space-5);
 
 		/* ── Layout ── */
 		--content-max-width: 960px;

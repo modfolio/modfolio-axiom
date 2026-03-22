@@ -1,14 +1,26 @@
 @layer tokens {
 	:root {
 		/* ── Brand gradient ── */
-		--accent-gradient: linear-gradient(135deg, var(--indigo-9), var(--indigo-7));
-		--accent-gradient-text: linear-gradient(135deg, var(--indigo-11), var(--indigo-9));
-		--accent-gradient-warm: linear-gradient(135deg, var(--indigo-9), var(--amber-7));
-		--accent-gradient-subtle: linear-gradient(135deg, var(--indigo-3), var(--amber-3));
+		--accent-gradient: linear-gradient(135deg, var(--indigo-9), var(--indigo-5));
+		--accent-gradient-text: linear-gradient(135deg, var(--gray-12), var(--indigo-5));
+		--accent-gradient-warm: linear-gradient(135deg, var(--indigo-5), var(--amber-5));
+		--accent-gradient-subtle: linear-gradient(
+			135deg,
+			rgba(129, 140, 248, 0.08),
+			rgba(245, 158, 11, 0.04)
+		);
+		--accent-glow: radial-gradient(
+			ellipse 50% 50% at 50% 50%,
+			rgba(129, 140, 248, 0.15),
+			transparent
+		);
 
-		/* ── Dot grid (tech motif) ── */
-		--dot-color: var(--gray-4);
+		/* ── Dot grid ── */
+		--dot-color: rgba(255, 255, 255, 0.04);
 		--dot-size: 1px;
-		--dot-gap: 24px;
+		--dot-gap: 32px;
+
+		/* ── Grid line ── */
+		--grid-line-color: rgba(255, 255, 255, 0.03);
 	}
 }

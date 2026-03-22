@@ -10,28 +10,28 @@ export const NewsletterPlaceholder = component$(() => {
 			display: flex;
 			align-items: baseline;
 			gap: var(--space-3);
-			margin-bottom: var(--space-4);
+			margin-bottom: var(--section-gap);
 		}
 
 		.news__label {
 			font-family: var(--font-ui);
-			font-size: var(--text-xs);
-			font-weight: 600;
+			font-size: var(--section-label-size);
+			font-weight: var(--section-label-weight);
 			text-transform: uppercase;
-			letter-spacing: var(--tracking-wide);
-			color: var(--color-text-tertiary);
+			letter-spacing: var(--section-label-tracking);
+			color: var(--section-label-color);
 		}
 
 		.news__source {
 			font-family: var(--font-code);
-			font-size: 11px;
+			font-size: var(--text-xs);
 			color: var(--color-text-tertiary);
-			opacity: 0.7;
+			letter-spacing: var(--tracking-label);
 		}
 
 		.news__grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
 			gap: var(--space-4);
 		}
 
@@ -39,18 +39,17 @@ export const NewsletterPlaceholder = component$(() => {
 			display: flex;
 			align-items: flex-start;
 			gap: var(--space-4);
-			background: var(--color-surface-1);
-			border: 1px solid var(--color-border-subtle);
-			border-radius: var(--radius-3);
-			padding: var(--space-5);
-			box-shadow: var(--shadow-1);
+			background: var(--card-bg);
+			border: var(--card-border);
+			border-radius: var(--card-radius);
+			padding: var(--card-padding);
 		}
 
 		.news__slot-number {
 			font-family: var(--font-code);
 			font-size: var(--text-2xl);
 			font-weight: 700;
-			color: var(--color-border-default);
+			color: var(--color-border-hover);
 			line-height: 1;
 			flex-shrink: 0;
 			user-select: none;
@@ -71,11 +70,10 @@ export const NewsletterPlaceholder = component$(() => {
 
 		.news__slot-meta {
 			font-family: var(--font-code);
-			font-size: 11px;
+			font-size: var(--text-xs);
 			color: var(--color-text-tertiary);
-			opacity: 0.6;
 			text-transform: uppercase;
-			letter-spacing: 0.03em;
+			letter-spacing: var(--tracking-label);
 		}
 	`);
 

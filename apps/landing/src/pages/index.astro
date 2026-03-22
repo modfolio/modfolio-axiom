@@ -1,23 +1,25 @@
 ---
 import Base from "~/layouts/Base.astro";
-import Hero from "~/components/landing/Hero.astro";
-import Philosophy from "~/components/landing/Philosophy.astro";
-import Capabilities from "~/components/landing/Capabilities.astro";
-import Showcase from "~/components/landing/Showcase.astro";
-import Architecture from "~/components/landing/Architecture.astro";
+import Domains from "~/components/landing/Domains.astro";
 import Footer from "~/components/landing/Footer.astro";
+import Header from "~/components/landing/Header.astro";
+import Hero from "~/components/landing/Hero.astro";
+import Manifesto from "~/components/landing/Manifesto.astro";
+import Showcase from "~/components/landing/Showcase.astro";
+import Steps from "~/components/landing/Steps.astro";
 ---
 
 <Base
-	title="Modfolio Axiom — Technology & Mobility"
-	description="기술이 삶의 이동과 만나는 곳. Axiom은 모빌리티와 기술의 교차점에서 새로운 경험을 설계합니다."
+	title="Modfolio Axiom — Applied Science & Engineering"
+	description="Where precision meets discovery. Axiom operates at the convergence of engineering, science, and applied research."
 >
+	<Header />
 	<main id="main">
 		<Hero />
-		<Philosophy />
-		<Capabilities />
+		<Manifesto />
+		<Domains />
 		<Showcase />
-		<Architecture />
+		<Steps />
 		<Footer />
 	</main>
 </Base>

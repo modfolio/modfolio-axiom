@@ -1,0 +1,57 @@
+<!-- Manifesto Section — GSAP pinned scroll, line-by-line text reveal -->
+<section class="manifesto" id="manifesto">
+	<div class="manifesto__pin">
+		<span class="section-label">Manifesto</span>
+		<p class="manifesto__text">
+			<span class="manifesto__line"
+				>Axiom operates at the convergence of engineering, science, and applied
+				research.</span
+			>
+			<span class="manifesto__line"
+				>From molecular chemistry to medical systems,</span
+			>
+			<span class="manifesto__line"
+				>from mobility infrastructure to deep tech incubation —</span
+			>
+			<span class="manifesto__line"
+				>we build the instruments that advance understanding.</span
+			>
+			<span class="manifesto__line"
+				>Each subsidiary is an independent research unit.</span
+			>
+			<span class="manifesto__line"
+				>United by rigor. Separated by purpose.</span
+			>
+		</p>
+	</div>
+</section>
+
+<style>
+	.manifesto {
+		min-height: 100vh;
+		position: relative;
+	}
+
+	.manifesto__pin {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 100vh;
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+		padding-inline: var(--content-padding);
+	}
+
+	.manifesto__text {
+		font-family: var(--font-body);
+		font-size: var(--text-2xl);
+		line-height: var(--leading-relaxed);
+		max-width: var(--measure);
+	}
+
+	.manifesto__line {
+		display: block;
+		margin-bottom: var(--space-3);
+		color: var(--color-text-primary);
+	}
+</style>

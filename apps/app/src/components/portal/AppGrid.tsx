@@ -12,31 +12,36 @@ export const AppGrid = component$(() => {
 			display: flex;
 			align-items: center;
 			gap: var(--space-3);
-			margin-bottom: var(--space-5);
+			margin-bottom: var(--section-gap);
 		}
 
 		.apps__label {
 			font-family: var(--font-ui);
-			font-size: var(--text-xs);
-			font-weight: 600;
+			font-size: var(--section-label-size);
+			font-weight: var(--section-label-weight);
 			text-transform: uppercase;
-			letter-spacing: var(--tracking-wide);
-			color: var(--color-text-tertiary);
+			letter-spacing: var(--section-label-tracking);
+			color: var(--section-label-color);
 		}
 
 		.apps__count {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: var(--size-badge);
+			padding: 0 var(--space-2);
 			font-family: var(--font-code);
 			font-size: var(--text-xs);
-			color: var(--color-interactive-primary);
-			background: var(--indigo-3);
-			padding: 2px var(--space-2);
-			border-radius: var(--radius-1);
 			font-weight: 600;
+			letter-spacing: var(--tracking-label);
+			color: var(--color-interactive-primary);
+			background: var(--color-interactive-muted);
+			border-radius: var(--radius-1);
 		}
 
 		.apps__grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
 			gap: var(--space-5);
 		}
 	`);

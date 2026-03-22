@@ -1,0 +1,64 @@
+<!-- Header — layout-patterns 규격: 80px fixed, 전폭, 로고(좌) + CTA(우) -->
+<header class="header" id="header">
+	<div class="header__inner">
+		<a href="/" class="header__brand" aria-label="Axiom Home">
+			<span class="header__logo-mark">A</span>
+			<span class="header__wordmark">Axiom</span>
+		</a>
+		<a href="https://nexus.modfolio.io" class="btn btn--primary">Enter Portal</a>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		background: rgba(10, 10, 20, 0.8);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--color-border-subtle);
+	}
+
+	.header__inner {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-inline: clamp(1rem, 4vw, 2rem);
+	}
+
+	.header__brand {
+		display: flex;
+		align-items: center;
+		gap: var(--space-3);
+	}
+
+	.header__logo-mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--size-logo-mark);
+		height: var(--size-logo-mark);
+		border: 1px solid var(--color-interactive-primary);
+		border-radius: var(--radius-2);
+		background: transparent;
+		color: var(--color-text-accent);
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: 700;
+	}
+
+	.header__wordmark {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		font-weight: 700;
+		color: var(--color-text-primary);
+		letter-spacing: var(--tracking-tight);
+	}
+</style>

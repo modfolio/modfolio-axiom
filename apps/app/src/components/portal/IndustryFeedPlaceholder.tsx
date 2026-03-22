@@ -10,26 +10,30 @@ export const IndustryFeedPlaceholder = component$(() => {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			margin-bottom: var(--space-4);
+			margin-bottom: var(--section-gap);
 		}
 
 		.feed__label {
 			font-family: var(--font-ui);
-			font-size: var(--text-xs);
-			font-weight: 600;
+			font-size: var(--section-label-size);
+			font-weight: var(--section-label-weight);
 			text-transform: uppercase;
-			letter-spacing: var(--tracking-wide);
-			color: var(--color-text-tertiary);
+			letter-spacing: var(--section-label-tracking);
+			color: var(--section-label-color);
 		}
 
 		.feed__badge {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: var(--size-badge);
+			padding: 0 var(--space-2);
 			font-family: var(--font-code);
-			font-size: 11px;
+			font-size: var(--text-xs);
 			color: var(--color-interactive-primary);
-			background: var(--indigo-3);
-			padding: var(--space-1) var(--space-3);
-			border-radius: var(--radius-pill);
-			letter-spacing: 0.03em;
+			background: var(--color-interactive-muted);
+			border-radius: var(--radius-1);
+			letter-spacing: var(--tracking-label);
 			text-transform: uppercase;
 		}
 
@@ -37,19 +41,18 @@ export const IndustryFeedPlaceholder = component$(() => {
 			display: flex;
 			align-items: flex-start;
 			gap: var(--space-5);
-			background: var(--color-surface-1);
-			border: 1px solid var(--color-border-default);
-			border-radius: var(--radius-3);
-			padding: var(--space-6);
-			box-shadow: var(--shadow-1);
+			background: var(--card-bg);
+			border: var(--card-border);
+			border-radius: var(--card-radius);
+			padding: var(--card-padding);
 		}
 
 		.feed__icon {
 			flex-shrink: 0;
-			width: 56px;
-			height: 56px;
-			background: var(--indigo-3);
-			border-radius: var(--radius-3);
+			width: var(--size-icon-box);
+			height: var(--size-icon-box);
+			background: var(--color-interactive-muted);
+			border-radius: var(--radius-2);
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -68,7 +71,7 @@ export const IndustryFeedPlaceholder = component$(() => {
 			font-size: var(--text-sm);
 			color: var(--color-text-tertiary);
 			line-height: var(--leading-normal);
-			max-width: 55ch;
+			max-width: var(--measure);
 		}
 	`);
 
@@ -80,7 +83,7 @@ export const IndustryFeedPlaceholder = component$(() => {
 			</div>
 			<div class="feed__panel">
 				<div class="feed__icon">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+					<svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
 						<path
 							d="M4 24 L12 16 L18 20 L28 8"
 							stroke="var(--color-interactive-primary)"

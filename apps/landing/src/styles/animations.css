@@ -1,12 +1,75 @@
 @layer utilities {
-	@keyframes ax-reveal {
+	/* ── GSAP gate: visible by default, hidden only when GSAP is ready ── */
+	html:not([data-gsap-ready]) .manifesto__line,
+	html:not([data-gsap-ready]) .domain-card,
+	html:not([data-gsap-ready]) .step,
+	html:not([data-gsap-ready]) .cta__inner {
+		opacity: 1;
+		transform: none;
+	}
+
+	html[data-gsap-ready] .manifesto__line {
+		opacity: 0.15;
+	}
+
+	html[data-gsap-ready] .domain-card {
+		opacity: 0;
+		transform: translateY(var(--space-6));
+	}
+
+	html[data-gsap-ready] .step {
+		opacity: 0;
+		transform: translateX(calc(-1 * var(--space-9)));
+	}
+
+	html[data-gsap-ready] .cta__inner {
+		opacity: 0;
+		transform: translateY(var(--space-5));
+	}
+
+	/* ── CSS scroll-driven animations (progressive enhancement) ── */
+	@supports (animation-timeline: view()) {
+		html:not([data-gsap-ready]) .domain-card {
+			animation: reveal-up linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 100%;
+		}
+
+		html:not([data-gsap-ready]) .step {
+			animation: reveal-left linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 100%;
+		}
+
+		html:not([data-gsap-ready]) .cta__inner {
+			animation: reveal-up linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 100%;
+		}
+	}
+
+	/* ── Keyframes ── */
+	@keyframes reveal-up {
 		from {
 			opacity: 0;
-			transform: translateY(20px);
+			transform: translateY(var(--space-6));
 		}
+
 		to {
 			opacity: 1;
 			transform: translateY(0);
+		}
+	}
+
+	@keyframes reveal-left {
+		from {
+			opacity: 0;
+			transform: translateX(calc(-1 * var(--space-9)));
+		}
+
+		to {
+			opacity: 1;
+			transform: translateX(0);
 		}
 	}
 
@@ -15,40 +78,34 @@
 		100% {
 			opacity: 1;
 		}
+
 		50% {
 			opacity: 0;
 		}
 	}
 
-	@keyframes ax-dot-drift {
-		0% {
-			background-position: 0 0;
-		}
-		100% {
-			background-position: var(--dot-gap) var(--dot-gap);
-		}
-	}
-
-	.reveal {
-		opacity: 0;
-	}
-
-	.reveal.visible {
-		animation: ax-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-		animation-delay: var(--reveal-delay, 0s);
-	}
-
+	/* ── Reduced motion: disable everything ── */
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;
 		}
 
-		.reveal {
+		.manifesto__line,
+		.domain-card,
+		.step,
+		.cta__inner {
+			animation: none;
+			transition: none;
 			opacity: 1;
+			transform: none;
 		}
 
-		.reveal.visible {
-			animation: none;
+		html[data-gsap-ready] .manifesto__line,
+		html[data-gsap-ready] .domain-card,
+		html[data-gsap-ready] .step,
+		html[data-gsap-ready] .cta__inner {
+			opacity: 1;
+			transform: none;
 		}
 	}
 }

@@ -8,27 +8,23 @@ interface AppCardProps {
 export const AppCard = component$<AppCardProps>(({ app }) => {
 	useStylesScoped$(`
 		.card {
-			background: var(--color-surface-1);
-			border: 1px solid var(--color-border-default);
-			border-radius: var(--radius-3);
+			background: var(--card-bg);
+			border: var(--card-border);
+			border-radius: var(--card-radius);
 			overflow: hidden;
-			box-shadow: var(--shadow-1);
-			transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+			transition: transform var(--dur-fast) var(--ease-out),
+				box-shadow var(--dur-fast) var(--ease-out),
+				border-color var(--dur-fast) var(--ease-out);
 		}
 
 		.card:hover {
-			transform: translateY(-2px);
+			transform: translateY(calc(var(--space-1) * -1));
 			box-shadow: var(--shadow-2);
 			border-color: var(--color-border-hover);
 		}
 
-		.card__accent {
-			height: 3px;
-			width: 100%;
-		}
-
 		.card__body {
-			padding: var(--space-5);
+			padding: var(--card-padding);
 		}
 
 		.card__header {
@@ -36,6 +32,12 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 			justify-content: space-between;
 			align-items: flex-start;
 			margin-bottom: var(--space-3);
+		}
+
+		.card__title-group {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-2);
 		}
 
 		.card__name {
@@ -46,44 +48,66 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 			letter-spacing: var(--tracking-tight);
 		}
 
-		.card__status {
+		.card__app-badge {
 			display: inline-flex;
 			align-items: center;
-			gap: 6px;
+			gap: var(--space-1);
+			height: var(--size-badge);
+			padding: 0 var(--space-2);
+			background: var(--color-border-subtle);
+			border-radius: var(--radius-1);
 			font-family: var(--font-code);
-			font-size: 11px;
-			text-transform: uppercase;
-			letter-spacing: 0.04em;
-			padding: var(--space-1) var(--space-3);
-			border-radius: var(--radius-pill);
+			font-size: var(--text-xs);
+			color: var(--color-text-secondary);
+			letter-spacing: var(--tracking-label);
 			white-space: nowrap;
 		}
 
+		.card__app-dot {
+			width: var(--size-status-dot);
+			height: var(--size-status-dot);
+			border-radius: 50%;
+			flex-shrink: 0;
+		}
+
+		.card__status {
+			display: inline-flex;
+			align-items: center;
+			gap: var(--space-1);
+			height: var(--size-badge);
+			padding: 0 var(--space-2);
+			font-family: var(--font-code);
+			font-size: var(--text-xs);
+			text-transform: uppercase;
+			letter-spacing: var(--tracking-label);
+			border-radius: var(--radius-1);
+			white-space: nowrap;
+			flex-shrink: 0;
+		}
+
 		.card__status-dot {
-			width: 6px;
-			height: 6px;
+			width: var(--size-status-dot);
+			height: var(--size-status-dot);
 			border-radius: 50%;
 			flex-shrink: 0;
 		}
 
 		.card__status--active {
-			background: rgba(22, 163, 74, 0.08);
+			background: var(--color-status-active-muted);
 			color: var(--color-status-active);
 		}
 
 		.card__status--active .card__status-dot {
 			background: var(--color-status-active);
-			box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
 		}
 
 		.card__status--landing {
-			background: rgba(217, 119, 6, 0.08);
+			background: var(--color-status-pending-muted);
 			color: var(--color-status-pending);
 		}
 
 		.card__status--landing .card__status-dot {
 			background: var(--color-status-pending);
-			box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
 		}
 
 		.card__desc {
@@ -112,23 +136,25 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 
 		.card__id {
 			font-family: var(--font-code);
-			font-size: 11px;
+			font-size: var(--text-xs);
 			color: var(--color-text-tertiary);
-			letter-spacing: 0.02em;
+			letter-spacing: var(--tracking-label);
 		}
 
 		.card__cta {
 			display: inline-flex;
 			align-items: center;
+			justify-content: center;
 			gap: var(--space-2);
+			height: var(--size-btn-sm);
+			padding: 0 var(--space-3);
 			font-family: var(--font-ui);
-			font-size: var(--text-sm);
+			font-size: var(--text-xs);
 			font-weight: 600;
 			color: var(--color-text-inverse);
 			background: var(--color-interactive-primary);
-			padding: var(--space-2) var(--space-5);
 			border-radius: var(--radius-2);
-			transition: background 0.15s ease;
+			transition: background var(--dur-fast) var(--ease-out);
 		}
 
 		.card__cta:hover {
@@ -142,18 +168,18 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 		}
 
 		.card__cta--secondary:hover {
-			background: var(--indigo-3);
+			background: var(--color-interactive-muted);
 			color: var(--color-interactive-hover);
 		}
 
 		.card__arrow {
 			font-family: var(--font-code);
 			font-size: var(--text-xs);
-			transition: transform 0.15s ease;
+			transition: transform var(--dur-fast) var(--ease-out);
 		}
 
 		.card__cta:hover .card__arrow {
-			transform: translateX(3px);
+			transform: translateX(var(--space-1));
 		}
 	`);
 
@@ -163,10 +189,15 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 
 	return (
 		<article class="card">
-			<div class="card__accent" style={{ background: app.accent }} />
 			<div class="card__body">
 				<div class="card__header">
-					<h3 class="card__name">{app.name}</h3>
+					<div class="card__title-group">
+						<h3 class="card__name">{app.name}</h3>
+						<span class="card__app-badge">
+							<span class="card__app-dot" style={{ background: app.accent }} />
+							{app.domain}
+						</span>
+					</div>
 					<span class={`card__status ${statusClass}`}>
 						<span class="card__status-dot" />
 						{statusLabel}
@@ -179,7 +210,7 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 				</div>
 				{isActive ? (
 					<a href={app.appUrl} class="card__cta" target="_blank" rel="noopener">
-						Open App <span class="card__arrow">{"->"}</span>
+						Open App <span class="card__arrow">{"\u2192"}</span>
 					</a>
 				) : (
 					<a
@@ -188,7 +219,7 @@ export const AppCard = component$<AppCardProps>(({ app }) => {
 						target="_blank"
 						rel="noopener"
 					>
-						View Landing <span class="card__arrow">{"->"}</span>
+						View Landing <span class="card__arrow">{"\u2192"}</span>
 					</a>
 				)}
 			</div>

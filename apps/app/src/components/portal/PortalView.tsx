@@ -19,31 +19,14 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 			min-height: 100dvh;
 			display: flex;
 			flex-direction: column;
-			position: relative;
-		}
-
-		.portal::before {
-			content: '';
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 280px;
-			background: var(--accent-gradient-subtle);
-			opacity: 0.5;
-			pointer-events: none;
-			z-index: -1;
-			mask-image: linear-gradient(to bottom, black, transparent);
-			-webkit-mask-image: linear-gradient(to bottom, black, transparent);
 		}
 
 		.portal__welcome {
 			margin-bottom: var(--space-8);
-			padding: var(--space-6) var(--space-7);
-			background: var(--color-surface-1);
-			border: 1px solid var(--color-border-subtle);
-			border-radius: var(--radius-3);
-			box-shadow: var(--shadow-1);
+			padding: var(--card-padding);
+			background: var(--card-bg);
+			border: var(--card-border);
+			border-radius: var(--card-radius);
 		}
 
 		.portal__greeting {
@@ -59,7 +42,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 			font-family: var(--font-code);
 			font-size: var(--text-sm);
 			color: var(--color-text-tertiary);
-			letter-spacing: var(--tracking-wide);
+			letter-spacing: var(--tracking-label);
 		}
 
 		.portal__footer {
@@ -72,7 +55,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 			font-family: var(--font-ui);
 			font-size: var(--text-xs);
 			color: var(--color-text-tertiary);
-			border-top: 1px solid var(--color-border-subtle);
+			border-top: 1px solid var(--color-border-default);
 		}
 
 		.portal__footer-links {
@@ -82,7 +65,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 
 		.portal__footer-link {
 			color: var(--color-text-tertiary);
-			transition: color 0.15s ease;
+			transition: color var(--dur-fast) var(--ease-out);
 		}
 
 		.portal__footer-link:hover {

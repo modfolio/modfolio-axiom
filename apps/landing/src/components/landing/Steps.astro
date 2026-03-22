@@ -1,0 +1,89 @@
+<!-- Steps Section — Numbered architecture steps with GSAP scroll reveal -->
+<section class="steps" id="steps">
+	<div class="steps__inner">
+		<span class="section-label">Architecture</span>
+		<div class="step">
+			<span class="step__number">01</span>
+			<div class="step__content">
+				<h3 class="step__title">Independent Research Units</h3>
+				<p class="step__body">
+					Each subsidiary operates with its own tech stack, database, and design
+					system. No coupling, no shared UI libraries — only shared contracts.
+				</p>
+			</div>
+		</div>
+		<div class="step__connector" aria-hidden="true"></div>
+		<div class="step">
+			<span class="step__number">02</span>
+			<div class="step__content">
+				<h3 class="step__title">Unified Identity</h3>
+				<p class="step__body">
+					Single SSO through Modfolio Connect, standardized data contracts, and
+					webhook APIs bind the ecosystem without physical code sharing.
+				</p>
+			</div>
+		</div>
+		<div class="step__connector" aria-hidden="true"></div>
+		<div class="step">
+			<span class="step__number">03</span>
+			<div class="step__content">
+				<h3 class="step__title">Edge-Native Infrastructure</h3>
+				<p class="step__body">
+					100% Cloudflare. Workers, Pages, D1, R2, Durable Objects. Zero cold
+					starts, global distribution, minimal latency.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.steps {
+		padding-block: var(--space-12);
+	}
+
+	.steps__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+		padding-inline: var(--content-padding);
+	}
+
+	.step {
+		display: flex;
+		gap: var(--space-6);
+		align-items: flex-start;
+	}
+
+	.step__number {
+		font-family: var(--font-code);
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		color: var(--color-text-accent);
+		opacity: 0.2;
+		min-width: var(--space-9);
+		flex-shrink: 0;
+	}
+
+	.step__title {
+		font-family: var(--font-ui);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-2);
+	}
+
+	.step__body {
+		font-family: var(--font-body);
+		font-size: var(--text-base);
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+		max-width: var(--measure);
+	}
+
+	.step__connector {
+		width: 1px;
+		height: var(--space-8);
+		border-left: 1px dashed var(--color-border-default);
+		margin-left: var(--space-6);
+	}
+</style>

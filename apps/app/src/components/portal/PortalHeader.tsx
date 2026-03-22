@@ -26,11 +26,12 @@ export const PortalHeader = component$<PortalHeaderProps>(({ user }) => {
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			width: 36px;
-			height: 36px;
-			background: var(--accent-gradient);
+			width: var(--size-logo-mark);
+			height: var(--size-logo-mark);
+			background: transparent;
+			border: 1px solid var(--color-interactive-primary);
 			border-radius: var(--radius-2);
-			color: var(--color-text-inverse);
+			color: var(--color-text-accent);
 			font-family: var(--font-display);
 			font-size: var(--text-lg);
 			font-weight: 700;
@@ -45,13 +46,16 @@ export const PortalHeader = component$<PortalHeaderProps>(({ user }) => {
 		}
 
 		.header__tag {
+			display: inline-flex;
+			align-items: center;
+			height: var(--size-badge);
+			padding: 0 var(--space-2);
+			background: var(--color-interactive-muted);
+			border-radius: var(--radius-1);
 			font-family: var(--font-code);
 			font-size: var(--text-xs);
-			color: var(--color-text-tertiary);
-			letter-spacing: var(--tracking-wide);
-			padding: var(--space-1) var(--space-3);
-			background: var(--color-surface-2);
-			border-radius: var(--radius-pill);
+			color: var(--color-interactive-primary);
+			letter-spacing: var(--tracking-label);
 		}
 
 		.header__actions {
@@ -67,11 +71,11 @@ export const PortalHeader = component$<PortalHeaderProps>(({ user }) => {
 		}
 
 		.header__avatar {
-			width: 32px;
-			height: 32px;
+			width: var(--size-avatar);
+			height: var(--size-avatar);
 			border-radius: 50%;
-			background: var(--indigo-3);
-			color: var(--indigo-9);
+			background: var(--indigo-1);
+			color: var(--indigo-5);
 			font-family: var(--font-ui);
 			font-size: var(--text-xs);
 			font-weight: 600;
@@ -88,15 +92,21 @@ export const PortalHeader = component$<PortalHeaderProps>(({ user }) => {
 		}
 
 		.header__logout {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: var(--size-btn-sm);
+			padding: 0 var(--space-3);
 			font-family: var(--font-ui);
 			font-size: var(--text-xs);
 			color: var(--color-text-tertiary);
-			padding: var(--space-2) var(--space-4);
 			border: 1px solid var(--color-border-default);
 			border-radius: var(--radius-2);
 			background: transparent;
 			cursor: pointer;
-			transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+			transition: color var(--dur-fast) var(--ease-out),
+				border-color var(--dur-fast) var(--ease-out),
+				background var(--dur-fast) var(--ease-out);
 		}
 
 		.header__logout:hover {
@@ -129,7 +139,7 @@ export const PortalHeader = component$<PortalHeaderProps>(({ user }) => {
 			<div class="header__brand">
 				<span class="header__logo">A</span>
 				<span class="header__wordmark">Axiom</span>
-				<span class="header__tag">Technology & Mobility</span>
+				<span class="header__tag">Applied Science & Engineering</span>
 			</div>
 			<div class="header__actions">
 				<div class="header__user">

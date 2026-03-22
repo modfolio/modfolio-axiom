@@ -1,58 +1,72 @@
-# Skill: /deploy — CF Pages 배포 가이드
+---
+description: CF Pages 배포 가이드
+effort: medium
+---
 
-Cloudflare Pages/Workers 배포 전략과 설정 가이드.
+# Skill: 배포
 
-## 배포 방식
+CF Pages 네이티브 GitHub 연동 기반 배포 전략.
 
-**GitHub 연동 자동 배포** (push-to-deploy). GitHub Actions 배포 금지.
+## 원칙
 
-## CF Pages 핵심 규칙
+**GitHub Actions 배포 워크플로우 금지. CF Pages 네이티브 GitHub 연동만 사용.**
 
-1. **Direct Upload은 GitHub 연동 불가** — 반드시 생성 시점에 GitHub 연결
-2. 이미 Direct Upload으로 만든 프로젝트는 삭제 후 재생성 필요
-3. 커스텀 도메인은 CF Pages 프로젝트 설정 + DNS CNAME 레코드 모두 필요
+### 이유
 
-## 프로젝트 구조
+- GitHub Actions는 월별 실행 횟수 제한 있음 (소규모 팀에 낭비)
+- CF Pages가 GitHub repo를 직접 감지해 자동 빌드/배포 — 별도 CI 파이프라인 불필요
+- Wrangler CLI + Actions 조합보다 설정이 단순하고 유지보수 부담 적음
 
-모든 앱은 Landing + App 두 개의 CF Pages 프로젝트:
+## CF Pages 설정 방식
 
-| 용도 | CF Pages 프로젝트 | 빌드 설정 |
-|------|-------------------|----------|
-| Landing | `{app-name}` | CLAUDE.md Commands 참조 |
-| App | `{app-name}-app` | CLAUDE.md Commands 참조 |
-
-## 빌드 설정
-
-이 레포의 빌드 명령어와 출력 디렉토리는 **CLAUDE.md의 Commands 섹션**을 참조한다.
-
-## 환경변수
-
-CF Pages 환경변수는 CF Dashboard 또는 Wrangler로 설정:
-
-```bash
-# 환경변수 확인
-wrangler pages deployment list --project-name={project}
-
-# 환경변수 설정 (CF Dashboard 권장)
-# Settings → Environment variables → Production / Preview
+```
+CF Pages 대시보드 또는 API:
+  source.type = "github"
+  source.config.owner = "modfolio"
+  source.config.repo_name = "{레포명}"
+  source.config.production_branch = "main"
+  build_config.build_command = "bun install --frozen-lockfile && bun run build -- --filter={app}"
+  build_config.destination_dir = "apps/{app}/{output_dir}"
+  build_config.root_dir = ""  # monorepo는 루트에서 빌드
 ```
 
-## CF API
+## Turbo monorepo 앱별 빌드 설정
 
-```bash
-# Account ID
-CF_ACCOUNT_ID=1b371ab22db7b19da66380e525fb1cc1
+| 앱 | build_command | destination_dir |
+|----|---------------|-----------------|
+| Nuxt 3 (SSR) | `bun install && bun run build -- --filter=app` | `apps/app/dist` |
+| Astro (landing) | `bun install && bun run build -- --filter=landing` | `apps/landing/dist` |
+| SvelteKit 5 | `bun install && bun run build -- --filter=app` | `apps/app/.svelte-kit/cloudflare` |
+| SolidStart | `bun install && bun run build -- --filter=app` | `apps/app/.output` |
 
-# Pages 프로젝트 목록
-curl -s "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects" \
-  -H "Authorization: Bearer $CF_API_TOKEN" | jq '.result[].name'
-```
+## CF Pages Critical Rule
 
-## 커스텀 도메인
+**Direct Upload -> GitHub 연동 불가능.**
 
-```bash
-# CF Dashboard에서 수동 추가:
-# 1. Pages 프로젝트 → Custom domains → Add domain
-# 2. DNS 존에서 CNAME 레코드 추가
-#    {subdomain} → {project}.pages.dev
-```
+- CF Pages 프로젝트는 **반드시 생성 시점에 GitHub 연동** 설정
+- 이미 Direct Upload로 만든 프로젝트는 삭제 후 재생성 필요
+- 이 규칙은 2026-02-22에 실제 실패로 확인됨 (journal 참조)
+
+## GitHub Actions 허용 범위
+
+**배포 목적 Actions는 금지. 다음 용도만 허용:**
+
+- Biome lint + typecheck (빌드 없는 품질 검사만)
+- `@modfolio/contracts` 패키지 publish (GitHub Packages)
+
+## CF API 정보
+
+| 항목 | 값 |
+|------|-----|
+| Account ID | `1b371ab22db7b19da66380e525fb1cc1` |
+| All-API Token | `tFLPlLIN94dzw05MvQQ47AW0ENbwkZs11zLXBF4L` |
+| Pages API Token | `A2rI4bNV4SsiMyGJZs4jGk9o6fi5_NPWKZCFNzxm` |
+
+## 새 앱 배포 체크리스트
+
+1. CF Pages 프로젝트 생성 (GitHub 연동 필수)
+2. 빌드 명령어 + 출력 디렉토리 설정
+3. 커스텀 도메인 연결 (DNS CNAME)
+4. 환경변수 설정 (Doppler에서 복사)
+5. GitHub push -> 자동 빌드/배포 확인
+6. `ecosystem.json` cfProject 필드 갱신

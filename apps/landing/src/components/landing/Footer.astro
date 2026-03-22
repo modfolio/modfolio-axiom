@@ -1,12 +1,4 @@
-<!-- CTA + Footer — layout-patterns 규격: 상단/하단 2단 분리, 구분선 전폭 -->
-<section class="cta">
-	<div class="cta__glow" aria-hidden="true"></div>
-	<div class="cta__inner">
-		<h2 class="cta__heading">Begin the experiment</h2>
-		<a href="https://nexus.modfolio.io" class="btn btn--primary btn--lg">Enter Portal</a>
-	</div>
-</section>
-
+<!-- Footer — layout-patterns 규격: sitemap + legal -->
 <footer class="footer">
 	<hr class="footer__rule" />
 	<div class="footer__main">
@@ -86,35 +78,6 @@
 </footer>
 
 <style>
-	/* ── CTA ── */
-	.cta {
-		padding-block: var(--space-12);
-		text-align: center;
-		position: relative;
-	}
-
-	.cta__glow {
-		position: absolute;
-		inset: 0;
-		background: var(--accent-glow);
-		pointer-events: none;
-	}
-
-	.cta__inner {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: var(--space-8);
-	}
-
-	.cta__heading {
-		font-family: var(--font-display);
-		font-size: var(--text-3xl);
-		font-weight: 700;
-		color: var(--color-text-primary);
-	}
-
 	/* ── Footer ── */
 	.footer__rule {
 		border: none;
@@ -201,7 +164,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
-		gap: var(--space-6);
+		gap: var(--space-8);
 		max-width: var(--content-max-width);
 		margin-inline: auto;
 		padding: var(--space-5) clamp(1rem, 4vw, 2rem) var(--space-6);
@@ -229,7 +192,7 @@
 
 		.footer__legal {
 			flex-direction: column;
-			gap: var(--space-3);
+			gap: var(--space-5);
 		}
 	}
 

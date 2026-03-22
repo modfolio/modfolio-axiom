@@ -14,8 +14,8 @@ import Footer from "~/components/landing/Footer.astro";
 			<span class="contact-hero__label">Contact</span>
 			<h1 class="contact-hero__title">Get in Touch</h1>
 			<p class="contact-hero__subtitle">
-				프로젝트 협업, 기술 문의, 또는 Axiom 생태계에 대해 알고 싶은
-				것이 있다면 연락해 주세요.
+				프로젝트 협업, 기술 문의, 또는 Axiom에 대해 알고 싶은 것이
+				있다면 연락해 주세요.
 			</p>
 		</section>
 
@@ -41,7 +41,8 @@ import Footer from "~/components/landing/Footer.astro";
 									width="20"
 									height="16"
 									rx="2"></rect>
-								<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+								<path
+									d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
 								></path>
 							</svg>
 						</div>
@@ -65,7 +66,8 @@ import Footer from "~/components/landing/Footer.astro";
 								stroke-linecap="round"
 								stroke-linejoin="round"
 							>
-								<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+								<path
+									d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
 								></path>
 								<circle cx="12" cy="10" r="3"></circle>
 							</svg>
@@ -91,7 +93,8 @@ import Footer from "~/components/landing/Footer.astro";
 								<path
 									d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
 								></path>
-								<path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+								<path d="M13.73 21a2 2 0 0 1-3.46 0"
+								></path>
 							</svg>
 						</div>
 						<h3 class="info-card__title">Social</h3>
@@ -145,7 +148,8 @@ import Footer from "~/components/landing/Footer.astro";
 						<div class="contact-business__item">
 							<dt>소재지</dt>
 							<dd>
-								경기도 수원시 팔달구 효원로 278, 6층 602호
+								경기도 수원시 팔달구 효원로 278, 6층
+								602호
 							</dd>
 						</div>
 					</dl>
@@ -154,9 +158,9 @@ import Footer from "~/components/landing/Footer.astro";
 		</section>
 
 		<section class="contact-cta">
-			<h2 class="contact-cta__heading">Explore Axiom Portal</h2>
-			<a href="https://nexus.modfolio.io" class="btn btn--primary btn--lg"
-				>Enter Portal</a
+			<a
+				href="https://nexus.modfolio.io"
+				class="btn btn--primary btn--lg">Explore Portal</a
 			>
 		</section>
 	</main>
@@ -369,7 +373,6 @@ import Footer from "~/components/landing/Footer.astro";
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--space-8);
 		position: relative;
 	}
 
@@ -388,13 +391,6 @@ import Footer from "~/components/landing/Footer.astro";
 			var(--color-border-default) 80%,
 			transparent
 		);
-	}
-
-	.contact-cta__heading {
-		font-family: var(--font-display);
-		font-size: var(--text-3xl);
-		font-weight: 700;
-		color: var(--color-text-primary);
 	}
 
 	/* ── Responsive ── */

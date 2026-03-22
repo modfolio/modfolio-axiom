@@ -1,0 +1,44 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/landing/Header.astro";
+import Footer from "~/components/landing/Footer.astro";
+import DomainPage from "~/components/landing/DomainPage.astro";
+---
+
+<Base
+	title="Medicine — Modfolio Axiom"
+	description="Clinical data systems, patient management, and diagnostic tools. 의료 데이터의 안전한 처리와 진단 도구."
+>
+	<Header />
+	<main id="main">
+		<DomainPage
+			title="Medicine"
+			number="05"
+			subtitle="Clinical data systems, patient management, diagnostic tools"
+			description={`임상 데이터 시스템과 환자 관리는 디지털 헬스케어의 핵심 인프라입니다. Axiom Medicine은 의료 데이터의 안전한 수집, 저장, 분석을 위한 기술적 토대를 구축합니다. 환자 프라이버시를 최우선으로 하면서도 효율적인 데이터 활용이 가능한 시스템을 설계합니다.
+
+의료 현장에서 발생하는 방대한 데이터를 구조화하고, 임상 의사결정을 지원하는 도구를 개발합니다. 전자 건강 기록(EHR) 연동, 의료 영상 분석, 약물 상호작용 검사 등 임상 워크플로우의 디지털화를 통해 의료진의 업무 효율을 높이고 환자 안전을 강화합니다.
+
+규제 준수와 데이터 보안은 의료 기술의 필수 조건입니다. HIPAA, GDPR 등 글로벌 의료 데이터 규제를 충족하는 아키텍처를 설계하며, 암호화, 접근 제어, 감사 로그 등 다층적 보안 체계를 구현합니다.`}
+			capabilities={[
+				{
+					title: "Clinical Data Systems",
+					desc: "임상 데이터의 구조화된 수집과 저장. EHR 연동, HL7 FHIR 표준 지원, 의료 용어 매핑.",
+				},
+				{
+					title: "Patient Management",
+					desc: "환자 프로필, 진료 이력, 처방 관리. 다기관 연동과 데이터 공유를 위한 표준화된 인터페이스.",
+				},
+				{
+					title: "Diagnostic Tools",
+					desc: "의료 영상 분석 보조, 검사 결과 해석, 진단 워크플로우 자동화. AI 기반 의사결정 지원 시스템.",
+				},
+				{
+					title: "HIPAA Compliance",
+					desc: "엔드투엔드 암호화, 역할 기반 접근 제어, 상세 감사 로그. 글로벌 의료 데이터 규제 준수 아키텍처.",
+				},
+			]}
+		/>
+	</main>
+	<Footer />
+</Base>

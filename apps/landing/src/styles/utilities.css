@@ -71,6 +71,7 @@
 		border: 1px solid transparent;
 		cursor: pointer;
 		white-space: nowrap;
+		text-decoration: none;
 		transition: all var(--dur-fast) var(--ease-out);
 	}
 

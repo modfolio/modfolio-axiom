@@ -1,0 +1,342 @@
+---
+interface Props {
+	title: string;
+	number: string;
+	subtitle: string;
+	description: string;
+	capabilities: Array<{ title: string; desc: string }>;
+	relatedProducts?: Array<{ name: string; url: string; desc: string }>;
+}
+
+const { title, number, subtitle, description, capabilities, relatedProducts } = Astro.props;
+const paragraphs = description.split("\n\n");
+---
+
+<section class="domain-hero">
+	<span class="domain-hero__number">{number}</span>
+	<h1 class="domain-hero__title">{title}</h1>
+	<p class="domain-hero__subtitle">{subtitle}</p>
+</section>
+
+<section class="domain-overview">
+	<div class="domain-overview__inner">
+		<span class="section-label">Overview</span>
+		<div class="domain-overview__text">
+			{paragraphs.map((p) => <p>{p}</p>)}
+		</div>
+	</div>
+</section>
+
+<section class="domain-capabilities">
+	<div class="domain-capabilities__inner">
+		<span class="section-label">Capabilities</span>
+		<div class="domain-capabilities__grid">
+			{
+				capabilities.map((cap) => (
+					<article class="cap-card">
+						<h3 class="cap-card__title">{cap.title}</h3>
+						<p class="cap-card__desc">{cap.desc}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+{
+	relatedProducts && relatedProducts.length > 0 && (
+		<section class="domain-products">
+			<div class="domain-products__inner">
+				<span class="section-label">Related Products</span>
+				<div class="domain-products__grid">
+					{relatedProducts.map((product) => (
+						<a
+							href={product.url}
+							class="product-card"
+							target="_blank"
+							rel="noopener"
+						>
+							<h3 class="product-card__name">{product.name}</h3>
+							<p class="product-card__desc">{product.desc}</p>
+							<span class="product-card__arrow">&rarr;</span>
+						</a>
+					))}
+				</div>
+			</div>
+		</section>
+	)
+}
+
+<section class="domain-cta">
+	<h2 class="domain-cta__heading">Explore Axiom Portal</h2>
+	<a href="https://nexus.modfolio.io" class="btn btn--primary btn--lg"
+		>Enter Portal</a
+	>
+</section>
+
+<style>
+	/* ── Hero ── */
+	.domain-hero {
+		min-height: 60vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding-top: 80px;
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.domain-hero__number {
+		font-family: var(--font-code);
+		font-size: var(--text-5xl);
+		color: var(--color-text-accent);
+		opacity: 0.15;
+		line-height: var(--leading-tight);
+		margin-bottom: var(--space-4);
+	}
+
+	.domain-hero__title {
+		font-family: var(--font-display);
+		font-size: var(--text-4xl);
+		font-weight: 700;
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+		background: var(--accent-gradient-text);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin-bottom: var(--space-5);
+	}
+
+	.domain-hero__subtitle {
+		font-family: var(--font-ui);
+		font-size: var(--text-lg);
+		color: var(--color-text-tertiary);
+		line-height: var(--leading-normal);
+		max-width: var(--measure);
+		letter-spacing: var(--tracking-label);
+	}
+
+	/* ── Overview ── */
+	.domain-overview {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.domain-overview::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.domain-overview__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.domain-overview__text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		max-width: var(--measure);
+	}
+
+	.domain-overview__text p {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+	}
+
+	/* ── Capabilities ── */
+	.domain-capabilities {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+	}
+
+	.domain-capabilities__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.domain-capabilities__grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-5);
+	}
+
+	.cap-card {
+		background: var(--card-bg);
+		border: var(--card-border);
+		border-radius: var(--card-radius);
+		padding: var(--card-padding);
+		transition:
+			border-color var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out);
+	}
+
+	.cap-card:hover {
+		border-color: var(--color-border-accent);
+		box-shadow: var(--shadow-glow);
+		background: var(--color-surface-2);
+	}
+
+	.cap-card__title {
+		font-family: var(--font-ui);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-3);
+	}
+
+	.cap-card__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		line-height: var(--leading-relaxed);
+	}
+
+	/* ── Related Products ── */
+	.domain-products {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.domain-products::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.domain-products__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.domain-products__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: var(--space-5);
+	}
+
+	.product-card {
+		display: flex;
+		flex-direction: column;
+		background: var(--card-bg);
+		border: var(--card-border);
+		border-radius: var(--card-radius);
+		padding: var(--card-padding);
+		text-decoration: none;
+		transition:
+			border-color var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out),
+			transform var(--dur-base) var(--ease-out);
+	}
+
+	.product-card:hover {
+		border-color: var(--color-border-accent);
+		box-shadow: var(--shadow-glow);
+		background: var(--color-surface-2);
+		transform: translateY(-2px);
+	}
+
+	.product-card__name {
+		font-family: var(--font-ui);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-2);
+	}
+
+	.product-card__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		line-height: var(--leading-relaxed);
+		flex: 1;
+	}
+
+	.product-card__arrow {
+		font-size: var(--text-lg);
+		color: var(--color-text-accent);
+		margin-top: var(--space-4);
+		transition: transform var(--dur-fast) var(--ease-out);
+	}
+
+	.product-card:hover .product-card__arrow {
+		transform: translateX(var(--space-2));
+	}
+
+	/* ── CTA ── */
+	.domain-cta {
+		text-align: center;
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-8);
+		position: relative;
+	}
+
+	.domain-cta::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.domain-cta__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 768px) {
+		.domain-capabilities__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.domain-hero {
+			min-height: 50vh;
+		}
+	}
+</style>

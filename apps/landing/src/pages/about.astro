@@ -1,0 +1,474 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/landing/Header.astro";
+import Footer from "~/components/landing/Footer.astro";
+---
+
+<Base
+	title="About — Modfolio Axiom"
+	description="Applied Science & Engineering. Axiom의 미션, 비전, 그리고 생태계."
+>
+	<Header />
+	<main id="main">
+		<section class="about-hero">
+			<span class="about-hero__label">About</span>
+			<h1 class="about-hero__title">Modfolio Axiom</h1>
+			<p class="about-hero__subtitle">Applied Science & Engineering</p>
+		</section>
+
+		<section class="about-mission">
+			<div class="about-mission__inner">
+				<span class="section-label">Mission</span>
+				<div class="about-mission__content">
+					<h2 class="about-mission__heading">
+						Where precision meets discovery
+					</h2>
+					<div class="about-mission__text">
+						<p>
+							Axiom은 정밀함과 발견이 만나는 지점에서 기술의 새로운
+							가능성을 탐구합니다. 엔지니어링, 과학, 의학, 연구의
+							경계를 넘나드는 응용 기술을 개발하고, 이를 실제
+							제품으로 구현하는 것이 우리의 미션입니다.
+						</p>
+						<p>
+							100% Cloudflare Edge Native 아키텍처 위에서 구축된
+							인프라는 전 세계 어디서든 동일한 성능과 안정성을
+							보장합니다. House of Brands 원칙에 따라 각 자회사
+							앱은 독립적인 디자인 시스템과 기술 스택을 유지하면서,
+							SSO와 데이터 스키마를 통해 유기적으로 연결됩니다.
+						</p>
+						<p>
+							Axiom이 추구하는 것은 단순한 소프트웨어 개발이
+							아닙니다. 과학적 방법론에 기반한 체계적 접근, 엣지
+							컴퓨팅의 한계를 탐구하는 기술적 도전, 그리고 이
+							모든 것을 실제 사용자 가치로 전환하는 응용
+							혁신입니다.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="about-subsidiary">
+			<div class="about-subsidiary__inner">
+				<span class="section-label">Subsidiary Apps</span>
+				<div class="about-subsidiary__grid">
+					<a
+						href="https://amberstella.com"
+						class="subsidiary-card"
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="subsidiary-card__header">
+							<h3 class="subsidiary-card__name">Amberstella</h3>
+							<span class="badge badge--active">Active</span>
+						</div>
+						<p class="subsidiary-card__desc">
+							실시간 셔틀/모빌리티 앱. Durable Objects +
+							WebSocket 기반 라이브 위치 추적과 탑승 관리
+							시스템.
+						</p>
+						<div class="subsidiary-card__stack">
+							<span class="badge badge--indigo">SvelteKit 5</span>
+							<span class="badge badge--indigo">D1</span>
+							<span class="badge badge--indigo"
+								>Durable Objects</span
+							>
+						</div>
+					</a>
+				</div>
+				<p class="about-subsidiary__note">
+					Axiom 그룹은 기술/모빌리티 영역의 자회사 앱을 지속적으로
+					확장하고 있습니다.
+				</p>
+			</div>
+		</section>
+
+		<section class="about-ecosystem">
+			<div class="about-ecosystem__inner">
+				<span class="section-label">Modfolio Universe</span>
+				<div class="about-ecosystem__content">
+					<h2 class="about-ecosystem__heading">
+						Part of something larger
+					</h2>
+					<p class="about-ecosystem__desc">
+						Axiom은 Modfolio Universe 생태계의 기술/모빌리티 그룹
+						포탈입니다. 15개 이상의 독립 앱으로 구성된 생태계 안에서
+						각 그룹은 고유한 영역을 담당합니다.
+					</p>
+					<div class="about-ecosystem__grid">
+						<a
+							href="https://works.modfolio.io"
+							class="ecosystem-card"
+							target="_blank"
+							rel="noopener"
+						>
+							<h3 class="ecosystem-card__name">
+								Modfolio Works
+							</h3>
+							<p class="ecosystem-card__desc">
+								교육/HR 그룹. 학원 CRM, AI 학습 도구.
+							</p>
+						</a>
+						<a
+							href="https://ls.modfolio.io"
+							class="ecosystem-card"
+							target="_blank"
+							rel="noopener"
+						>
+							<h3 class="ecosystem-card__name">Modfolio LS</h3>
+							<p class="ecosystem-card__desc">
+								라이프스타일 그룹. 여행, 자기 관리 도구.
+							</p>
+						</a>
+						<a
+							href="https://studio.modfolio.io"
+							class="ecosystem-card"
+							target="_blank"
+							rel="noopener"
+						>
+							<h3 class="ecosystem-card__name">
+								Modfolio Studio
+							</h3>
+							<p class="ecosystem-card__desc">
+								미디어/유틸리티 그룹. 문서, 오디오 변환.
+							</p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="about-cta">
+			<h2 class="about-cta__heading">Explore Axiom Portal</h2>
+			<a href="https://nexus.modfolio.io" class="btn btn--primary btn--lg"
+				>Enter Portal</a
+			>
+		</section>
+	</main>
+	<Footer />
+</Base>
+
+<style>
+	/* ── Hero ── */
+	.about-hero {
+		min-height: 60vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding-top: 80px;
+		padding-inline: clamp(1rem, 4vw, 2rem);
+	}
+
+	.about-hero__label {
+		font-family: var(--font-code);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		margin-bottom: var(--space-5);
+	}
+
+	.about-hero__title {
+		font-family: var(--font-display);
+		font-size: var(--text-4xl);
+		font-weight: 700;
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+		background: var(--accent-gradient-text);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin-bottom: var(--space-4);
+	}
+
+	.about-hero__subtitle {
+		font-family: var(--font-code);
+		font-size: var(--text-lg);
+		color: var(--color-text-accent);
+		letter-spacing: var(--tracking-label);
+	}
+
+	/* ── Mission ── */
+	.about-mission {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.about-mission::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.about-mission__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.about-mission__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: 700;
+		line-height: var(--leading-snug);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-6);
+	}
+
+	.about-mission__text {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-5);
+		max-width: var(--measure);
+	}
+
+	.about-mission__text p {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+	}
+
+	/* ── Subsidiary ── */
+	.about-subsidiary {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.about-subsidiary::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.about-subsidiary__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.about-subsidiary__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: var(--space-5);
+		margin-bottom: var(--space-6);
+	}
+
+	.subsidiary-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		background: var(--card-bg);
+		border: var(--card-border);
+		border-radius: var(--card-radius);
+		padding: var(--card-padding);
+		text-decoration: none;
+		transition:
+			border-color var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out),
+			transform var(--dur-base) var(--ease-out);
+	}
+
+	.subsidiary-card:hover {
+		border-color: var(--color-border-accent);
+		box-shadow: var(--shadow-glow);
+		background: var(--color-surface-2);
+		transform: translateY(-2px);
+	}
+
+	.subsidiary-card__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.subsidiary-card__name {
+		font-family: var(--font-ui);
+		font-size: var(--text-xl);
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.subsidiary-card__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		line-height: var(--leading-relaxed);
+	}
+
+	.subsidiary-card__stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+	}
+
+	.about-subsidiary__note {
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		font-style: italic;
+	}
+
+	/* ── Ecosystem ── */
+	.about-ecosystem {
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		position: relative;
+	}
+
+	.about-ecosystem::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.about-ecosystem__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+	}
+
+	.about-ecosystem__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: 700;
+		line-height: var(--leading-snug);
+		letter-spacing: var(--tracking-tight);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-4);
+	}
+
+	.about-ecosystem__desc {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+		max-width: var(--measure);
+		margin-bottom: var(--space-8);
+	}
+
+	.about-ecosystem__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-5);
+	}
+
+	.ecosystem-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		background: var(--card-bg);
+		border: var(--card-border);
+		border-radius: var(--card-radius);
+		padding: var(--card-padding);
+		text-decoration: none;
+		transition:
+			border-color var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out),
+			transform var(--dur-base) var(--ease-out);
+	}
+
+	.ecosystem-card:hover {
+		border-color: var(--color-border-accent);
+		box-shadow: var(--shadow-glow);
+		background: var(--color-surface-2);
+		transform: translateY(-2px);
+	}
+
+	.ecosystem-card__name {
+		font-family: var(--font-ui);
+		font-size: var(--text-lg);
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	.ecosystem-card__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		line-height: var(--leading-relaxed);
+	}
+
+	/* ── CTA ── */
+	.about-cta {
+		text-align: center;
+		padding-block: var(--space-12);
+		padding-inline: clamp(1rem, 4vw, 2rem);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-8);
+		position: relative;
+	}
+
+	.about-cta::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border-default) 20%,
+			var(--color-border-accent) 50%,
+			var(--color-border-default) 80%,
+			transparent
+		);
+	}
+
+	.about-cta__heading {
+		font-family: var(--font-display);
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 768px) {
+		.about-ecosystem__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.about-hero {
+			min-height: 50vh;
+		}
+	}
+</style>

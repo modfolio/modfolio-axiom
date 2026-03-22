@@ -1,0 +1,44 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/landing/Header.astro";
+import Footer from "~/components/landing/Footer.astro";
+import DomainPage from "~/components/landing/DomainPage.astro";
+---
+
+<Base
+	title="Chemistry — Modfolio Axiom"
+	description="Molecular analysis, compound databases, and lab automation. 화학 데이터의 디지털화와 자동화."
+>
+	<Header />
+	<main id="main">
+		<DomainPage
+			title="Chemistry"
+			number="03"
+			subtitle="Molecular analysis, compound databases, lab automation"
+			description={`화학 데이터의 디지털화와 자동화는 실험실 연구의 효율성을 근본적으로 변화시킵니다. 분자 구조 분석부터 화합물 데이터베이스 구축, 실험 자동화 프로토콜 설계까지, 화학 연구의 전 과정을 디지털 인프라로 지원합니다.
+
+Axiom Chemistry는 화학 정보학(Cheminformatics)의 최신 기술을 Edge 컴퓨팅 환경에 접목합니다. 분자 표현, 반응 예측, 물성 추정 등 계산 화학의 핵심 알고리즘을 서버리스 아키텍처 위에서 구현하여, 어디서든 접근 가능한 연구 도구를 제공합니다.
+
+실험 데이터의 체계적 수집과 분석을 통해 연구자들이 더 빠르고 정확한 결론에 도달할 수 있도록 지원합니다. 실험실 장비 연동, 시약 관리, 안전 프로토콜 자동화 등 실험 환경의 디지털 전환을 목표로 합니다.`}
+			capabilities={[
+				{
+					title: "Molecular Analysis",
+					desc: "분자 구조 시각화, 물성 예측, 반응 메커니즘 분석. 계산 화학 알고리즘의 웹 기반 구현.",
+				},
+				{
+					title: "Compound Databases",
+					desc: "화합물 라이브러리 구축과 검색. 구조 기반 유사도 검색, 물성 필터링, SMILES/InChI 표준 지원.",
+				},
+				{
+					title: "Lab Automation",
+					desc: "실험 프로토콜 디지털화, 장비 연동 API, 시약 재고 관리. 실험실 운영의 자동화와 표준화.",
+				},
+				{
+					title: "Chemical Informatics",
+					desc: "QSAR 모델링, 약물 후보 스크리닝, 독성 예측. 데이터 기반 화학 연구 의사결정 지원 시스템.",
+				},
+			]}
+		/>
+	</main>
+	<Footer />
+</Base>

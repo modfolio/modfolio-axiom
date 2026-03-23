@@ -1,6 +1,7 @@
 ---
-description: 생태계 업데이트 수집
-effort: medium
+description: 생태계 업데이트 수집 — 모든 프로젝트의 최신 변경 요약
+effort: low
+allowed-tools: Read, Glob, Grep
 ---
 
 # Skill: /collect-updates — 생태계 업데이트 수집

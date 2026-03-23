@@ -1,6 +1,7 @@
 ---
-description: 새 앱 스캐폴딩
-effort: high
+description: 새 Modfolio 앱 스캐폴딩 — Cloudflare Pages + 프레임워크 템플릿
+effort: low
+allowed-tools: Read, Glob, Grep
 ---
 
 # Skill: 새 앱 스캐폴딩

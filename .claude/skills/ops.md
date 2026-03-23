@@ -1,6 +1,7 @@
 ---
-description: 시크릿, 계정, 이메일 관리
-effort: medium
+description: 시크릿 관리, 계정 전략, 이메일 운영 가이드
+effort: low
+allowed-tools: Read, Glob, Grep
 ---
 
 # Skill: 운영 — 시크릿, 계정, 이메일

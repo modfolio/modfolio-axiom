@@ -1,9 +1,13 @@
 ---
-description: 도메인 맵 + 현황
-effort: medium
+description: 생태계 도메인 맵 + 현황 조회 — ecosystem.json 기반 앱 레지스트리
+effort: low
+allowed-tools: Read, Glob, Grep
 ---
 
 # Skill: 생태계 현황
+
+## Auto Context
+@ecosystem.json
 
 생태계 전체 도메인 맵, 앱 상태, CF 프로젝트 정보.
 

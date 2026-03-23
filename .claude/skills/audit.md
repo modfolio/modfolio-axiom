@@ -1,6 +1,7 @@
 ---
-description: 생태계 헬스체크
-effort: medium
+description: 생태계 상태 검증 — ecosystem.json vs 실제 배포 상태 비교
+effort: low
+allowed-tools: Read, Glob, Grep
 ---
 
 # Skill: /audit — 생태계 헬스체크

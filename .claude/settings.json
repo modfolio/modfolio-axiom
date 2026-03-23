@@ -7,11 +7,13 @@
       "Bash(bun run dev)",
       "Bash(bun run dev:*)",
       "Bash(bun run build)",
+      "Bash(bun run build:*)",
       "Bash(bun run test:*)",
       "Bash(bun run lint)",
       "Bash(bun run lint:*)",
       "Bash(bun run format)",
-      "Bash(bun run format:*)"
+      "Bash(bun run format:*)",
+      "Bash(bun run quality:*)"
     ]
   },
   "hooks": {
@@ -22,6 +24,10 @@
           {
             "type": "command",
             "command": "bun run check 2>&1 | tail -5"
+          },
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'contracts/'; then echo '⚠ Contract 변경 감지. 완료 후 bun run schema-impact 필수.'; fi"
           }
         ]
       }
@@ -32,7 +38,31 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo $TOOL_INPUT | grep -q 'git commit' && bun run check && bun run typecheck || true"
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git commit'; then bun run check && bun run typecheck; fi"
+          },
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git push'; then bun run quality:all 2>&1 | tail -20; fi"
+          },
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -qE 'gh api|gh pr|gh issue|gh run'; then echo '⚠ GitHub API 호출 감지. 로컬에서 가능한 작업인지 먼저 확인하세요. rate limit 낭비 주의.'; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "agent",
+            "prompt": "End-of-turn quality gate for Qwik City project. Check changed files for violations.\n\nSTEP 1: Run `git status --porcelain` to identify changed files.\nCategorize: UI (.tsx/.jsx/.css), API (.ts in routes/api/server), Schema (schema.ts/drizzle), Contract (contracts/).\n\nSTEP 2: Per category, grep changed files for:\n- UI: hardcoded colors (#hex, rgb(, hsl( outside var()), hardcoded spacing (raw px not var(--space-*)), animation without prefers-reduced-motion, animate on width/height/top/left\n- API/TS: @ts-ignore, biome-ignore, eslint-disable, as any, hardcoded secrets\n- Schema: missing table prefix, FK without indexes, missing createdAt/updatedAt\n- Qwik: useVisibleTask$ without comment justifying eager execution, missing component$ wrapper, import React or from 'react' (wrong framework), useEffect/useState/useRef (React anti-patterns), useClientEffect$ (deprecated), document.querySelector or window. without isServer guard (resumability violation)\n- Contract: breaking change without version bump\n\nSTEP 3: Check memory/pattern-history.md for repeated violations.\n\nRESPONSE FORMAT: You MUST respond with ONLY a JSON object, no other text.\nIf no violations: {\"ok\": true}\nIf violations found: {\"ok\": false, \"reason\": \"## Quality Gate: FAIL\\n- [severity] file:line — description\"}",
+            "timeout": 30
+          },
+          {
+            "type": "agent",
+            "prompt": "Check if architecture/design decisions were made in this turn. If yes, append to memory/decisions-log.md with format:\n\n## [date] [title]\n- 결정: ...\n- 근거: ...\n- 대안: ...\n- 선택 이유: ...\n\nRESPONSE FORMAT: You MUST respond with ONLY a JSON object, no other text.\nIf no decisions were made: {\"ok\": true}\nIf decisions were logged: {\"ok\": true}",
+            "timeout": 15
           }
         ]
       }

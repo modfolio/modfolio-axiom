@@ -12,8 +12,9 @@
     "build": "cd apps/landing && bun run build && cd ../../apps/app && bun run build",
     "build:landing": "cd apps/landing && bun run build",
     "build:app": "cd apps/app && bun run build",
-    "check": "cd apps/app && bun run check",
-    "typecheck": "cd apps/app && bun run typecheck",
+    "check": "cd apps/app && bun run check && cd ../../apps/landing && bun run check",
+    "typecheck": "cd apps/app && bun run typecheck && cd ../../apps/landing && bun run typecheck",
+    "quality:all": "bun run check && bun run typecheck",
     "lint": "cd apps/app && bun run lint",
     "format": "cd apps/app && bun run format"
   }

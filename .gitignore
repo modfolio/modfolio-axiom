@@ -8,3 +8,9 @@ server
 *.local
 .env
 .env.*
+
+# Claude Code transient files
+.claude/settings.local.json
+.claude/cache/
+.claude/todos/
+.claude/shell-snapshots/

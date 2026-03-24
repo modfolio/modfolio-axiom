@@ -32,11 +32,6 @@ const canonicalUrl = "https://axiom.modfolio.io";
 		<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 		<slot />
 		<div class="grain-overlay" aria-hidden="true"></div>
-		<script is:inline>
-			if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-				import("/scripts/gsap-init.js").catch(() => {});
-			}
-		</script>
 	</body>
 </html>
 

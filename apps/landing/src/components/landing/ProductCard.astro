@@ -1,0 +1,80 @@
+<!-- Product Section — Amberstella minimal card -->
+<section class="product" id="product">
+	<div class="product__inner">
+		<span class="section-label">First Product</span>
+		<div class="product__card">
+			<span class="product__label">Mobility & Logistics</span>
+			<h2 class="product__name">Amberstella</h2>
+			<p class="product__desc">셔틀의 실시간 위치를 추적하고, 탑승 경험을 개선합니다.</p>
+			<a href="https://amberstella.com" class="product__link" target="_blank" rel="noopener">
+				amberstella.com
+				<span aria-hidden="true">&rarr;</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.product {
+		padding-block: var(--space-12);
+	}
+
+	.product__inner {
+		max-width: var(--content-max-width);
+		margin-inline: auto;
+		padding-inline: var(--content-padding);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+	}
+
+	.product__card {
+		padding: var(--space-8);
+		border: var(--card-border);
+		border-radius: var(--card-radius);
+		background: var(--color-surface-1);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+		max-width: 480px;
+	}
+
+	.product__label {
+		font-family: var(--font-code);
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-widest);
+		color: var(--color-text-tertiary);
+	}
+
+	.product__name {
+		font-family: var(--font-display);
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		color: var(--color-text-primary);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.product__desc {
+		font-family: var(--font-ui);
+		font-size: var(--text-base);
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+	}
+
+	.product__link {
+		font-family: var(--font-code);
+		font-size: var(--text-sm);
+		color: var(--color-text-accent);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		margin-top: var(--space-2);
+		transition: color var(--dur-fast) var(--ease-out);
+	}
+
+	.product__link:hover {
+		color: var(--color-interactive-hover);
+	}
+</style>

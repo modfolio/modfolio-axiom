@@ -5,22 +5,18 @@ import Domains from "~/components/landing/Domains.astro";
 import Footer from "~/components/landing/Footer.astro";
 import Header from "~/components/landing/Header.astro";
 import Hero from "~/components/landing/Hero.astro";
-import Manifesto from "~/components/landing/Manifesto.astro";
-import Showcase from "~/components/landing/Showcase.astro";
-import Steps from "~/components/landing/Steps.astro";
+import ProductCard from "~/components/landing/ProductCard.astro";
 ---
 
 <Base
 	title="Modfolio Axiom — Applied Science & Engineering"
-	description="Where precision meets discovery. Axiom operates at the convergence of engineering, science, and applied research."
+	description="기술이 산업과 만나는 지점을 설계합니다. Modfolio의 응용 기술 그룹."
 >
 	<Header />
 	<main id="main">
 		<Hero />
-		<Manifesto />
 		<Domains />
-		<Showcase />
-		<Steps />
+		<ProductCard />
 		<Cta />
 		<Footer />
 	</main>

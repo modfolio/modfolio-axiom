@@ -27,6 +27,30 @@ Modfolio Axiom 계열(기술/모빌리티) 앱의 **그룹 랜딩 포탈**. 생�
 | `bun run typecheck` | TypeScript strict mode 검사 |
 | `bun run lint` | Biome lint |
 | `bun run format` | Biome format |
+| `bun run quality:all` | check + typecheck (양쪽 앱) |
+| `bun run preview` | 프로덕션 프리뷰 |
+
+## Monorepo Topology
+
+```
+modfolio-axiom/
+├── apps/
+│   ├── landing/          # Astro — 마케팅 랜딩 (axiom.modfolio.io)
+│   │   └── src/
+│   │       ├── layouts/  # Base.astro
+│   │       ├── pages/    # index, about, domains, contact 등
+│   │       └── styles/   # 3-tier 디자인 토큰 (primitives/semantic/accent)
+│   └── app/              # Qwik City — SSO 포탈 앱
+│       └── src/
+│           ├── components/portal/  # AppCard, AppGrid, PortalHeader 등
+│           ├── routes/             # index, auth/ (login/callback/logout)
+│           └── styles/             # 동일 토큰 시스템 (app 전용 값만 다름)
+├── knowledge/            # 프로젝트 지식 (global.md, projects/)
+└── memory/               # 자가학습 데이터 (.gitignore로 내용 제외)
+```
+
+**Landing (Astro)**: zero-JS 기본, GSAP + WebGL은 island 패턴으로 로드. `--content-max-width: 1120px`.
+**App (Qwik City)**: resumable SSO 포탈. `--content-max-width: 960px`. component$ wrapper 필수.
 
 ## Quality Gate (필수)
 
@@ -89,6 +113,7 @@ bun run check && bun run typecheck
 | `/observability` | CF 트레이싱 + OTLP + SigNoz (wrangler.jsonc, Neon 브랜칭) |
 | `/layout-patterns` | 헤더/푸터/섹션 레이아웃 규격 (참조용) |
 | `/harness-check` | 하네스 전체 점검 (MCP, skills, agents, rules, hooks, knowledge) |
+| `/preflight` | 세션 시작 전 종합 점검 (MCP, deps, lint, git, env) |
 
 ### 생성형 (Agent 오케스트레이션)
 
@@ -193,7 +218,8 @@ bun run check && bun run typecheck
 - 지식: CLAUDE.md 하단 생태계 동기화 블록
 - Skills: `.claude/skills/` | Agents: `.claude/agents/`
 - 규칙: `.claude/rules/` (파일 패턴별 자동 로드)
-- MCP: context7, github, cloudflare, playwright, neon, svelte, figma (CLI 등록), canva (CLI 등록), paper (로컬 Desktop), sequential-thinking, filesystem
+- 비주얼 아이덴티티: `knowledge/projects/axiom-visual-identity.md`
+- MCP: context7, github, cloudflare, playwright, neon, svelte, figma (CLI 등록), canva (CLI 등록), paper (로컬 Desktop), filesystem
 
 ---
 

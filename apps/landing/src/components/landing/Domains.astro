@@ -40,7 +40,7 @@
 
 <style>
 	.domains {
-		padding-block: var(--space-12);
+		padding-block: var(--section-pad-md);
 		padding-inline: var(--content-padding);
 		position: relative;
 	}
@@ -92,14 +92,13 @@
 		display: flex;
 		flex-direction: column;
 		transition:
-			border-color var(--dur-base) var(--ease-out),
+			background var(--dur-base) var(--ease-out),
 			box-shadow var(--dur-base) var(--ease-out);
 	}
 
 	.domain-card:hover {
-		border-color: var(--color-border-accent);
+		background: var(--color-surface-elevated);
 		box-shadow: var(--shadow-glow);
-		background: var(--color-surface-2);
 	}
 
 	.domain-card__number {

@@ -34,11 +34,21 @@
 		--color-status-pending-muted: rgba(245, 158, 11, 0.12);
 		--color-status-error: var(--red-7);
 
+		/* ── Surfaces (extended depth) ── */
+		--color-surface-sunken: var(--gray-0);
+		--color-surface-elevated: #1a1a30;
+		--header-bg: rgba(10, 10, 20, 0.8);
+
 		/* ── Card system ── */
 		--card-padding: var(--space-5);
-		--card-radius: var(--radius-3);
-		--card-border: 1px solid var(--color-border-default);
+		--card-radius: 0px;
+		--card-border: none;
 		--card-bg: var(--color-surface-1);
+
+		/* ── Section spacing (fluid) ── */
+		--section-pad-sm: clamp(5rem, 8vh, 8rem);
+		--section-pad-md: clamp(6rem, 10vh, 10rem);
+		--section-pad-lg: clamp(8rem, 12vh, 12rem);
 
 		/* ── Section label system ── */
 		--section-label-size: var(--text-xs);

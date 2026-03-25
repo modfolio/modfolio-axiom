@@ -17,6 +17,16 @@
 
 		--gray-0-5: #0f0f1c;
 
+		/* ── Surface depth (tonal layering) ── */
+		--surface-raw-code: #0d0d1a;
+		--surface-raw-1: #111122;
+		--surface-raw-2: #191930;
+		--surface-raw-3: #1e1e3a;
+		--surface-raw-elevated: #1a1a30;
+
+		/* ── Component sizing ── */
+		--header-height: 80px;
+
 		/* ── Indigo axis (electric) ── */
 		--indigo-1: #1a1a3e;
 		--indigo-3: #2d2d6b;

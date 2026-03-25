@@ -7,11 +7,12 @@
 
 **Dark Navy-Black** 기반 + **Indigo Electric** 액센트. 기술/정밀/공학의 시각적 표현.
 "Cinematic Contrast" — 어두운 배경 위에 빛나는 인디고 포인트로 시네마틱 대비 효과.
+"Engineering Precision" — 0px border-radius 카드, tonal surface layering, no-line 구분.
 
 ## Color System
 
 ### Foundation
-- **Surface**: #0a0a14 → #16161f → #1f1f2e → #2a2a3e (4단계 깊이)
+- **Surface**: #0a0a14 → #111122 → #191930 → #1e1e3a → #1a1a30(elevated) (5단계 깊이 + elevated)
 - **Text**: #f4f4f9 (primary), 80%/60% opacity variants
 - **Border**: rgba(255,255,255, 0.04/0.06/0.12) 3단계
 
@@ -48,15 +49,23 @@ Fluid typography: `clamp(min, preferred, max)` — text-xs(0.625rem) ~ text-5xl(
 
 ## Motion
 
-- GSAP: stagger reveal (domain cards, manifesto lines, CTA)
-- CSS scroll-driven: `@supports (animation-timeline: view())`
+- CSS scroll-driven animation only (`@supports (animation-timeline: view())`)
+- Domain 카드: stagger reveal (80ms 간격 cascade)
 - `prefers-reduced-motion: reduce`에서 모든 애니메이션 비활성화
 - Duration tokens: fast(150ms), base(300ms), slow(600ms)
+- GSAP 제거됨 (2026-03-24) — CSS native로 대체
+
+## Card System
+
+- **border-radius**: 0px (engineering precision)
+- **border**: none (ghost border — surface color 차이로 구분)
+- **hover**: background → surface-elevated + shadow-glow (no tilt, no rotate, no 3D)
 
 ## Brand Elements
 
 - **Wordmark**: "Modfolio Axiom" (GoldenBook 700, --text-xl)
-- **Descriptor**: "Applied Science & Engineering"
+- **Tagline**: "Engineering the Uncharted"
+- **Descriptor (legacy)**: "Applied Science & Engineering"
 - **Section labels**: `"// {label}"` code-comment 모티프 (monospace, indigo-5)
 
 ## Landing vs App 차이

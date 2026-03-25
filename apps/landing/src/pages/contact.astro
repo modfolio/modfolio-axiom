@@ -133,7 +133,7 @@ import Footer from "~/components/landing/Footer.astro";
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding-top: 80px;
+		padding-top: var(--header-height);
 		padding-inline: clamp(1rem, 4vw, 2rem);
 	}
 
@@ -211,12 +211,12 @@ import Footer from "~/components/landing/Footer.astro";
 		flex-direction: column;
 		gap: var(--space-3);
 		transition:
-			border-color var(--dur-base) var(--ease-out),
+			background var(--dur-base) var(--ease-out),
 			box-shadow var(--dur-base) var(--ease-out);
 	}
 
 	.info-card:hover {
-		border-color: var(--color-border-accent);
+		background: var(--color-surface-elevated);
 		box-shadow: var(--shadow-glow);
 	}
 

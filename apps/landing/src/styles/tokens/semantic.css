@@ -2,10 +2,10 @@
 	:root {
 		/* ── Surfaces ── */
 		--color-surface-0: var(--gray-0);
-		--color-surface-1: #111122;
-		--color-surface-2: #191930;
-		--color-surface-3: #1e1e3a;
-		--color-surface-code: #0d0d1a;
+		--color-surface-1: var(--surface-raw-1);
+		--color-surface-2: var(--surface-raw-2);
+		--color-surface-3: var(--surface-raw-3);
+		--color-surface-code: var(--surface-raw-code);
 
 		/* ── Text ── */
 		--color-text-primary: var(--gray-12);
@@ -36,8 +36,8 @@
 
 		/* ── Surfaces (extended depth) ── */
 		--color-surface-sunken: var(--gray-0);
-		--color-surface-elevated: #1a1a30;
-		--header-bg: rgba(10, 10, 20, 0.8);
+		--color-surface-elevated: var(--surface-raw-elevated);
+		--header-bg: rgba(10, 10, 20, 0.8); /* gray-0 at 80% opacity */
 
 		/* ── Card system ── */
 		--card-padding: var(--space-5);

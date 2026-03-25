@@ -92,11 +92,13 @@
 		display: flex;
 		flex-direction: column;
 		transition:
+			border-color var(--dur-base) var(--ease-out),
 			background var(--dur-base) var(--ease-out),
 			box-shadow var(--dur-base) var(--ease-out);
 	}
 
 	.domain-card:hover {
+		border-color: var(--color-border-accent);
 		background: var(--color-surface-elevated);
 		box-shadow: var(--shadow-glow);
 	}
@@ -128,6 +130,13 @@
 	.domain-card:hover .domain-card__desc {
 		color: var(--color-text-secondary);
 	}
+
+	.domain-card:nth-child(1) .domain-card__number { color: var(--indigo-5); }
+	.domain-card:nth-child(2) .domain-card__number { color: var(--indigo-9); }
+	.domain-card:nth-child(3) .domain-card__number { color: var(--green-7); }
+	.domain-card:nth-child(4) .domain-card__number { color: var(--amber-5); }
+	.domain-card:nth-child(5) .domain-card__number { color: var(--amber-5); }
+	.domain-card:nth-child(6) .domain-card__number { color: var(--indigo-7); }
 
 	@media (max-width: 768px) {
 		.domains__grid {

@@ -40,6 +40,14 @@
 		max-width: var(--product-card-width);
 	}
 
+	.product__card::before {
+		content: "";
+		display: block;
+		height: 3px;
+		background: var(--accent-gradient);
+		margin-bottom: var(--space-5);
+	}
+
 	.product__label {
 		font-family: var(--font-code);
 		font-size: var(--text-xs);

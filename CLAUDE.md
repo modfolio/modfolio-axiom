@@ -253,6 +253,22 @@ bun run check && bun run typecheck
 2. **Zero Physical Sharing** — 코드 공유는 SSO 토큰 / 데이터 스키마(`@modfolio/contracts`) / Webhook API로만.
 3. **100% Cloudflare Edge Native** — Vercel, AWS, GCP 배제. CF Pages + Workers만.
 
+## 도메인 아키텍처 (2-프로젝트 모델)
+
+각 브랜드는 두 개의 독립 프로젝트로 분리된다:
+- `domain.com` = 앱 (SvelteKit / SolidStart 등)
+- `www.domain.com` = 랜딩 (Astro)
+
+**entryMode** (`app.domain.com` 폐기, naked 도메인 = 항상 앱):
+- `app-first` — `domain.com/` → 앱 홈 직접 표시 (예: Umbracast, GistCore, Sincheong)
+- `landing-first` — `domain.com/` → `www.domain.com/home` 302 redirect (예: Naviaca, Fortiscribe)
+
+**인프라 앱**: 서브도메인 모델 유지 (`*.modfolio.io`). 2-프로젝트 분리 적용 안 함.
+
+**그룹 포털** (4개 그룹, 크리에이티브 도메인):
+- Works, LS, Axiom, Studio 각 그룹은 독립 포털 도메인 보유
+- 각 포털은 Astro 랜딩 + 그룹 앱 링크 허브
+
 ## 앱별 기술 스택 (2026-03-15 갱신)
 
 ### 인프라 앱
@@ -285,17 +301,17 @@ bun run check && bun run typecheck
 | Worthee | LS | SolidStart | Neon (Postgres) | 셀프 관리 |
 | Amberstella | Axiom | SvelteKit 5 | D1 + Durable Objects | 실시간 셔틀 |
 | Munseo | Studio | Hono (CF Workers) | D1 + R2 | 문서 변환 |
-| Umbracast | Studio | Hono (CF Workers) | D1 + R2 | 오디오 변환 |
+| Umbracast | Studio | SvelteKit 5 | D1 + R2 | 오디오 변환 |
 | Sincheong | Studio | SvelteKit 5 | Neon (Postgres) | 폼 빌더 |
 
 ### 프레임워크 분포 (7종)
 
 | 프레임워크 | 앱 수 |
 |---|---|
-| SvelteKit 5 | 8 (modfolio app, modfolio-connect, modfolio-press app, modfolio-pay, GistCore, Fortiscribe, Amberstella, Sincheong) |
+| SvelteKit 5 | 9 (modfolio app, modfolio-connect, modfolio-press app, modfolio-pay, GistCore, Fortiscribe, Amberstella, Sincheong, Umbracast) |
 | SolidStart | 4 (modfolio-dev, modfolio-on, KeepNBuild, Worthee) |
 | Astro | 3 (modfolio landing, press landing, docs) + 자회사 그룹 랜딩 3 + 각 앱 랜딩 |
-| Hono (CF Workers) | 2 (Munseo, Umbracast) |
+| Hono (CF Workers) | 1 (Munseo) |
 | Qwik City | 1 (modfolio-admin) |
 | Nuxt 3 | 1 (Naviaca) |
 | Qwik | 1 (Modfolio Axiom landing) |
@@ -492,7 +508,7 @@ npx wrangler pages secret put NPM_TOKEN --project-name={cf-project-name}
 - **Amberstella** (`amberstella`, v0.2.0-sso, landing): **셔틀/모빌리티 실시간 앱**. 셔틀 위치 추적, 탑승 관리.
 - **Modfolio Studio** (`modfolio-studio`, v0.1.0, landing): 
 - **Munseo** (`munseo`, v0.2.0-sso, active): Document conversion/management utility
-- **Umbracast** (`umbracast`, v0.2.0-sso, landing): **오디오 변환/관리 유틸리티**. 오디오 파일 형식 변환.
+- **Umbracast** (`umbracast`, v1.1.0, active): **오디오 변환/관리 유틸리티**. YouTube/SoundCloud/직접 업로드 오디오 변환, 편집, 라이브러리 관리.
 - **Sincheong** (`sincheong`, v0.4.0-sveltekit5, active): **범용 폼 빌더 및 관리 앱**. 동적 폼 생성, 제출 관리, 대기열 자동화.
 
 ---

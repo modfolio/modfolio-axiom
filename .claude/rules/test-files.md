@@ -8,7 +8,7 @@ paths:
 # Test Files Rules
 
 ## 프레임워크
-- Vitest 4 패턴 사용
+- Vitest 4 패턴 사용 — gotchas.md 참조
 - `vi.fn().mockImplementation()` + `function` 키워드 (not arrow for constructors)
 
 ## 테스트 범위

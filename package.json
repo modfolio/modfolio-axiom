@@ -1,7 +1,9 @@
 {
   "name": "modfolio-axiom",
   "private": true,
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "packageManager": "bun@1.2.4",
   "overrides": {
     "esbuild": "0.27.4"
@@ -16,6 +18,7 @@
     "typecheck": "cd apps/app && bun run typecheck && cd ../../apps/landing && bun run typecheck",
     "quality:all": "bun run check && bun run typecheck",
     "lint": "cd apps/app && bun run lint",
-    "format": "cd apps/app && bun run format"
+    "format": "cd apps/app && bun run format",
+    "harness-pull": "bun run ../modfolio-universe/scripts/harness-pull.ts"
   }
 }

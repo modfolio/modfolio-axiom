@@ -9,8 +9,9 @@
     },
     "playwright": {
       "type": "stdio",
-      "command": "npx",
+      "command": "bunx",
       "args": [
+        "--bun",
         "-y",
         "@anthropic-ai/mcp-playwright"
       ]

@@ -19,6 +19,9 @@
     "quality:all": "bun run check && bun run typecheck",
     "lint": "cd apps/app && bun run lint",
     "format": "cd apps/app && bun run format",
-    "harness-pull": "bun run ../modfolio-universe/scripts/harness-pull.ts"
+    "harness-pull": "modfolio-harness-pull"
+  },
+  "devDependencies": {
+    "@modfolio/harness": "^2.12.0"
   }
 }

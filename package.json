@@ -19,9 +19,10 @@
     "quality:all": "bun run check && bun run typecheck",
     "lint": "cd apps/app && bun run lint",
     "format": "cd apps/app && bun run format",
-    "harness-pull": "modfolio-harness-pull"
+    "harness-pull": "modfolio-harness-pull",
+    "modfolio": "modfolio-check"
   },
   "devDependencies": {
-    "@modfolio/harness": "^2.14.3"
+    "@modfolio/harness": "^2.14.4"
   }
 }

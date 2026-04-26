@@ -22,6 +22,6 @@
     "harness-pull": "modfolio-harness-pull"
   },
   "devDependencies": {
-    "@modfolio/harness": "^2.14.2"
+    "@modfolio/harness": "^2.14.3"
   }
 }

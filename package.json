@@ -23,6 +23,6 @@
     "modfolio": "modfolio-check"
   },
   "devDependencies": {
-    "@modfolio/harness": "^3.0.0"
+    "@modfolio/harness": "^3.1.0"
   }
 }

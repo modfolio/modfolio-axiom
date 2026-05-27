@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@builder.io/qwik": "^1.19.0",
 		"@builder.io/qwik-city": "^1.19.0",
-		"@modfolio/connect-sdk": "^5.1.0"
+		"@modfolio/connect-sdk": "^7.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.0",

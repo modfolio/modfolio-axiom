@@ -1,3 +1,9 @@
+---
+interface Props {
+	user?: { email: string } | null;
+}
+const { user = null } = Astro.props;
+---
 <!-- Header — layout-patterns 규격: 80px fixed, 전폭, 로고(좌) + nav + CTA(우) -->
 <header class="header" id="header">
 	<div class="header__inner">
@@ -8,7 +14,11 @@
 			<a href="/#focus" class="header__link">Focus</a>
 			<a href="/contact" class="header__link">Contact</a>
 		</nav>
-		<a href="https://nexus.modfolio.io" class="btn btn--primary">Enter Portal</a>
+		{user ? (
+			<a href="https://nexus.modfolio.io" class="btn btn--primary">Enter Portal</a>
+		) : (
+			<a href="/auth/login" class="btn btn--primary">로그인</a>
+		)}
 	</div>
 </header>
 

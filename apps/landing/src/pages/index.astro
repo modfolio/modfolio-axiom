@@ -7,13 +7,15 @@ import Header from "~/components/landing/Header.astro";
 import Hero from "~/components/landing/Hero.astro";
 import Philosophy from "~/components/landing/Philosophy.astro";
 import ProductCard from "~/components/landing/ProductCard.astro";
+
+const user = Astro.locals.user;
 ---
 
 <Base
 	title="Modfolio Axiom — Engineering the Uncharted"
 	description="산업의 깊은 곳에서 정밀한 답을 설계합니다. Modfolio의 응용 과학 그룹."
 >
-	<Header />
+	<Header user={user} />
 	<main id="main">
 		<Hero />
 		<Philosophy />

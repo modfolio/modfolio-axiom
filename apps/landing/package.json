@@ -1,23 +1,26 @@
 {
-	"name": "@modfolio-axiom/landing",
-	"type": "module",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"check": "biome check src/",
-		"typecheck": "tsc --noEmit",
-		"typecheck:astro": "astro check",
-		"lint": "biome lint src/",
-		"format": "biome format --write src/"
-	},
-	"dependencies": {
-		"@astrojs/cloudflare": "^12.5.0",
-		"astro": "^5.7.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.4.0",
-		"@astrojs/check": "^0.9.0",
-		"typescript": "^5.9.0"
-	}
+  "name": "@modfolio-axiom/landing",
+  "type": "module",
+  "scripts": {
+    "dev": "athsra run modfolio-axiom -- astro dev",
+    "build": "athsra run modfolio-axiom -- astro build",
+    "preview": "athsra run modfolio-axiom -- astro preview",
+    "deploy": "astro build && athsra run modfolio-connect -- wrangler deploy",
+    "check": "biome check src/",
+    "typecheck": "tsc --noEmit",
+    "typecheck:astro": "astro check",
+    "lint": "biome lint src/",
+    "format": "biome format --write src/"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.5.0",
+    "@modfolio/connect-sdk": "^7.0.0",
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@biomejs/biome": "^2.4.0",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.94.0"
+  }
 }

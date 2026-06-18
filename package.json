@@ -1,28 +1,31 @@
 {
-  "name": "modfolio-axiom",
-  "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
-  "packageManager": "bun@1.2.4",
-  "overrides": {
-    "esbuild": "0.27.4"
-  },
-  "scripts": {
-    "dev": "cd apps/app && bun run dev",
-    "dev:landing": "cd apps/landing && bun run dev",
-    "build": "cd apps/landing && bun run build && cd ../../apps/app && bun run build",
-    "build:landing": "cd apps/landing && bun run build",
-    "build:app": "cd apps/app && bun run build",
-    "check": "cd apps/app && bun run check && cd ../../apps/landing && bun run check",
-    "typecheck": "cd apps/app && bun run typecheck && cd ../../apps/landing && bun run typecheck",
-    "quality:all": "bun run check && bun run typecheck",
-    "lint": "cd apps/app && bun run lint",
-    "format": "cd apps/app && bun run format",
-    "harness-pull": "modfolio-harness-pull",
-    "modfolio": "modfolio-check"
-  },
-  "devDependencies": {
-    "@modfolio/harness": "^3.4.0"
-  }
+	"name": "modfolio-axiom",
+	"private": true,
+	"workspaces": [
+		"apps/*"
+	],
+	"packageManager": "bun@1.2.4",
+	"overrides": {
+		"esbuild": "0.27.4"
+	},
+	"scripts": {
+		"dev": "cd apps/app && bun run dev",
+		"dev:landing": "cd apps/landing && bun run dev",
+		"build": "cd apps/landing && bun run build && cd ../../apps/app && bun run build",
+		"build:landing": "cd apps/landing && bun run build",
+		"build:app": "cd apps/app && bun run build",
+		"check": "cd apps/app && bun run check && cd ../../apps/landing && bun run check",
+		"typecheck": "cd apps/app && bun run typecheck && cd ../../apps/landing && bun run typecheck",
+		"quality:all": "bun run check && bun run typecheck",
+		"lint": "cd apps/app && bun run lint",
+		"format": "cd apps/app && bun run format",
+		"harness-pull": "modfolio-harness-pull",
+		"modfolio": "modfolio-check"
+	},
+	"devDependencies": {
+		"@modfolio/harness": "^3.13.2"
+	},
+	"dependencies": {
+		"@modfolio/contracts": "1.2.0"
+	}
 }

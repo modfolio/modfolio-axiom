@@ -23,7 +23,9 @@
 		"athsra": {
 			"type": "stdio",
 			"command": "athsra",
-			"args": ["mcp"]
+			"args": [
+				"mcp"
+			]
 		}
 	}
 }

@@ -22,3 +22,7 @@ server
 # modfolio skill transient artifacts — added by cleanup-modfolio-transient.sh
 .modfolio-report.json
 .modfolio-history/
+# @modfolio/harness runtime — regenerated/per-machine, do not commit
+.claude/app-registry.json
+.claude/payment-approval.json
+memory/dream-report*.md

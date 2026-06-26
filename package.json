@@ -23,9 +23,9 @@
 		"modfolio": "modfolio-check"
 	},
 	"devDependencies": {
-		"@modfolio/harness": "^3.14.0"
+		"@modfolio/harness": "^3.15.4"
 	},
 	"dependencies": {
-		"@modfolio/contracts": "^1.2.0"
+		"@modfolio/contracts": "^1.5.0"
 	}
 }

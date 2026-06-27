@@ -1,9 +1,11 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "modfolio-axiom-app",
+	"main": "dist/_worker.js",
 	"compatibility_date": "2025-01-01",
 	"compatibility_flags": ["nodejs_compat"],
-	"pages_build_output_dir": "dist",
+	// Qwik cloudflare-pages 어댑터: dist/_worker.js + dist 정적. Workers 모드 = main+assets.
+	"assets": { "directory": "dist", "binding": "ASSETS" },
 	// Observability — CF Automatic Tracing + OTLP → SigNoz
 	"observability": {
 		"traces": {

@@ -1,13 +1,19 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "modfolio-axiom",
-	"main": "dist/_worker.js/index.js",
+	"main": "@astrojs/cloudflare/entrypoints/server",
 	"compatibility_date": "2026-04-15",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
-		"directory": "dist",
+		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	// adapter 14 enables Astro sessions via a SESSION KV binding. Pin the namespace id
+	// explicitly — wrangler automatic provisioning is create-only (not idempotent) and
+	// fails on redeploy once the namespace exists (API code 10014).
+	"kv_namespaces": [
+		{ "binding": "SESSION", "id": "4c246fa763524f83954f2557c5d375c9" }
+	],
 	"routes": [
 		{ "pattern": "axiom.modfolio.io", "custom_domain": true }
 	],

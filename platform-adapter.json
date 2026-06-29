@@ -1,0 +1,16 @@
+{
+	"$schema": "https://pkg.modfolio.io/contracts/platform/project-platform-manifest.schema.json",
+	"repo": "modfolio-axiom",
+	"consumes": [],
+	"coreServices": {
+		"athsra": {
+			"project": "modfolio-axiom"
+		},
+		"connect": {
+			"clientId": "axiom",
+			"agent": false
+		}
+	},
+	"ciRunsOn": "none",
+	"registryConsume": ["github-packages"]
+}

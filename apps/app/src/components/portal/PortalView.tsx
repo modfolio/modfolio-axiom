@@ -2,7 +2,7 @@ import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import { apps } from "~/data/apps";
 import type { SessionUser } from "~/lib/session";
 import { AppGrid } from "./AppGrid";
-import { IndustryFeedPlaceholder } from "./IndustryFeedPlaceholder";
+import { DomainGrid } from "./DomainGrid";
 import { NewsletterPlaceholder } from "./NewsletterPlaceholder";
 import { PortalHeader } from "./PortalHeader";
 
@@ -92,7 +92,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 			</section>
 
 			<AppGrid />
-			<IndustryFeedPlaceholder />
+			<DomainGrid />
 			<NewsletterPlaceholder />
 
 			<footer class="portal__footer">

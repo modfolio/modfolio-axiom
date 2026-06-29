@@ -23,6 +23,7 @@
 		"modfolio": "modfolio-check"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "2.5.1",
 		"@modfolio/harness": "^3.16.1"
 	},
 	"dependencies": {

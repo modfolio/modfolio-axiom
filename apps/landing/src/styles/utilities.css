@@ -144,12 +144,12 @@
 	}
 
 	.badge--amber {
-		background: rgba(245, 158, 11, 0.12);
+		background: var(--color-status-warning-muted);
 		color: var(--amber-5);
 	}
 
 	.badge--active {
-		background: rgba(52, 211, 153, 0.12);
+		background: var(--color-status-active-muted);
 		color: var(--green-7);
 	}
 

@@ -6,6 +6,18 @@
 	"compatibility_flags": ["nodejs_compat"],
 	// Qwik cloudflare-pages 어댑터: dist/_worker.js + dist 정적. Workers 모드 = main+assets.
 	"assets": { "directory": "dist", "binding": "ASSETS" },
+	// Custom domain — the portal is served at nexus.modfolio.io (Pages→Workers
+	// migration, commit 1bc61cb). The binding existed only in CF dashboard state,
+	// so this config was not a reproducible source of truth: a fresh `wrangler
+	// deploy` would not (re)attach the domain. Declaring it here makes the route
+	// config-as-code. `custom_domain: true` is idempotent on redeploy — unlike
+	// KV-namespace provisioning (create-only, API 10014), wrangler reconciles an
+	// already-bound custom domain rather than failing. The OIDC redirect_uri the
+	// SSO SDK derives from this origin (`${url.origin}/auth/callback`) is
+	// https://nexus.modfolio.io/auth/callback — it MUST be registered in
+	// modfolio-connect's client `axiom` redirect allowlist (currently only the
+	// landing arc/axiom callbacks are seeded; see journal 20260701-completeness-round.md).
+	"routes": [{ "pattern": "nexus.modfolio.io", "custom_domain": true }],
 	// Observability — CF Automatic Tracing + OTLP → SigNoz
 	"observability": {
 		"traces": {

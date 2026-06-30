@@ -17,6 +17,24 @@ export default component$(() => {
 				<title>Modfolio Axiom</title>
 				<meta name="description" content="테크놀로지 & 모빌리티 그룹 포탈" />
 
+				{/* Dark UI — render native controls/scrollbars/form fields dark and
+				    avoid a light flash before the stylesheet's dark surfaces apply. */}
+				<meta name="color-scheme" content="dark" />
+				<meta name="theme-color" content="#0a0a14" />
+				<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+				<link rel="canonical" href="https://nexus.modfolio.io" />
+
+				{/* Social / Open Graph (no og:image — a raster card is an owner-supplied
+				    asset; summary card degrades gracefully without one). */}
+				<meta property="og:title" content="Modfolio Axiom" />
+				<meta property="og:description" content="테크놀로지 & 모빌리티 그룹 포탈" />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://nexus.modfolio.io" />
+				<meta property="og:locale" content="ko_KR" />
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:title" content="Modfolio Axiom" />
+				<meta name="twitter:description" content="테크놀로지 & 모빌리티 그룹 포탈" />
+
 				{/* Master Typekit (fmh4fod) */}
 				<link rel="preconnect" href="https://use.typekit.net" />
 				<link rel="stylesheet" href="https://use.typekit.net/fmh4fod.css" />

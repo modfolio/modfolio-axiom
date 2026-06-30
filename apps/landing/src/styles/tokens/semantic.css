@@ -21,6 +21,10 @@
 		--color-interactive-hover: var(--indigo-7);
 		--color-interactive-muted: rgba(129, 140, 248, 0.12);
 
+		/* ── Status (muted badge fills — tinted at 12% to match interactive-muted) ── */
+		--color-status-active-muted: rgba(52, 211, 153, 0.12);
+		--color-status-warning-muted: rgba(245, 158, 11, 0.12);
+
 		/* ── Surfaces (extended depth) ── */
 		--color-surface-elevated: var(--surface-raw-elevated);
 		--header-bg: rgba(10, 10, 20, 0.8); /* gray-0 at 80% opacity */

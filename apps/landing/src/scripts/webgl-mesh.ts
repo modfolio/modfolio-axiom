@@ -160,28 +160,49 @@ export function initMeshGradient(canvas: HTMLCanvasElement): () => void {
 	let disposed = false;
 	const startTime = performance.now();
 
+	const glCtx = gl as WebGL2RenderingContext;
+
+	/**
+	 * Draw a single frame. Wrapped in try/catch so a runtime GL fault (most
+	 * commonly a lost context — GPU reset, tab backgrounding, driver hiccup)
+	 * tears the loop down and shows the CSS fallback instead of throwing and
+	 * silently freezing the canvas mid-animation.
+	 */
+	function drawFrame(timestamp: number): boolean {
+		try {
+			resizeCanvas(canvas, glCtx, dpr);
+			const elapsed = (timestamp - startTime) / 1000;
+			glCtx.uniform1f(uTime, elapsed);
+			glCtx.uniform2f(uResolution, canvas.width, canvas.height);
+			glCtx.bindVertexArray(vao);
+			glCtx.drawArrays(glCtx.TRIANGLE_STRIP, 0, 4);
+			return true;
+		} catch {
+			canvas.classList.add("webgl-fallback");
+			return false;
+		}
+	}
+
 	function render(timestamp: number): void {
 		if (disposed) return;
 
-		if (timestamp - lastFrame < FRAME_INTERVAL) {
-			rafId = requestAnimationFrame(render);
-			return;
+		// Throttle to FRAME_INTERVAL without dropping the loop: when a frame
+		// arrives too early, skip the draw but still reschedule the next one.
+		if (timestamp - lastFrame >= FRAME_INTERVAL) {
+			lastFrame = timestamp;
+			if (!drawFrame(timestamp)) {
+				// GL fault — stop animating; the fallback gradient is now showing.
+				disposed = true;
+				return;
+			}
 		}
-		lastFrame = timestamp;
 
-		resizeCanvas(canvas, gl as WebGL2RenderingContext, dpr);
-
-		const elapsed = (timestamp - startTime) / 1000;
-		(gl as WebGL2RenderingContext).uniform1f(uTime, elapsed);
-		(gl as WebGL2RenderingContext).uniform2f(uResolution, canvas.width, canvas.height);
-
-		(gl as WebGL2RenderingContext).bindVertexArray(vao);
-		const glCtx = gl as WebGL2RenderingContext;
-		glCtx.drawArrays(glCtx.TRIANGLE_STRIP, 0, 4);
+		rafId = requestAnimationFrame(render);
 	}
 
 	if (prefersReducedMotion) {
-		render(performance.now());
+		// Static single frame — honour the user's motion preference.
+		drawFrame(performance.now());
 	} else {
 		rafId = requestAnimationFrame(render);
 	}

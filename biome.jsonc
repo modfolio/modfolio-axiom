@@ -46,6 +46,21 @@
 					}
 				}
 			}
+		},
+		{
+			// Test modules are plain Bun test files, never Qwik QRLs/components, so
+			// the auto-enabled qwik-domain serializability rule (triggered merely by
+			// @builder.io/qwik being a dependency) is a false positive here. Scope it
+			// off for tests rather than wrapping non-Qwik helpers in $() or suppressing
+			// inline — the rule simply does not apply to this file class.
+			"includes": ["**/*.test.ts", "**/*.test.tsx"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"useQwikValidLexicalScope": "off"
+					}
+				}
+			}
 		}
 	]
 }

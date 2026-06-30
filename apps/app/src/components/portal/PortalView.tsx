@@ -2,8 +2,8 @@ import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import { apps } from "~/data/apps";
 import type { SessionUser } from "~/lib/session";
 import { AppGrid } from "./AppGrid";
+import { AxiomDispatch } from "./AxiomDispatch";
 import { DomainGrid } from "./DomainGrid";
-import { NewsletterPlaceholder } from "./NewsletterPlaceholder";
 import { PortalHeader } from "./PortalHeader";
 
 interface PortalViewProps {
@@ -93,7 +93,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 
 			<AppGrid />
 			<DomainGrid />
-			<NewsletterPlaceholder />
+			<AxiomDispatch />
 
 			<footer class="portal__footer">
 				<span>&copy; 2026 Modfolio. All rights reserved.</span>

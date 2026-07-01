@@ -48,9 +48,11 @@ export const DomainGrid = component$(() => {
 	`);
 
 	return (
-		<section class="domains">
+		<section class="domains" aria-labelledby="domains-heading">
 			<div class="domains__header">
-				<span class="domains__label">Applied Domains</span>
+				<h2 id="domains-heading" class="domains__label">
+					Applied Domains
+				</h2>
 				<span class="domains__count">{domains.length}</span>
 			</div>
 			<div class="domains__grid">

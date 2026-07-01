@@ -223,9 +223,11 @@ export const AxiomDispatch = component$(() => {
 	const hasArticles = count > 0;
 
 	return (
-		<section class="news" aria-label="Axiom Dispatch">
+		<section class="news" aria-labelledby="dispatch-heading">
 			<div class="news__header">
-				<span class="news__label">{dispatchSource.label}</span>
+				<h2 id="dispatch-heading" class="news__label">
+					{dispatchSource.label}
+				</h2>
 				<span class="news__source">{dispatchSource.via}</span>
 				{hasArticles ? <span class="news__count">{count}</span> : null}
 			</div>

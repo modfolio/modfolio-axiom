@@ -81,7 +81,7 @@ export const PortalView = component$<PortalViewProps>(({ user }) => {
 			<PortalHeader user={user} />
 
 			<section class="portal__welcome">
-				<h2 class="portal__greeting">Welcome, {displayName}</h2>
+				<h1 class="portal__greeting">Welcome, {displayName}</h1>
 				<p class="portal__summary">
 					{"AXIOM CONTROL CENTER // "}
 					{apps.length}

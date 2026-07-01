@@ -56,3 +56,19 @@
 		list-style: none;
 	}
 }
+
+@layer utilities {
+	/* ── Global focus indicator (WCAG 2.4.7 Focus Visible) ──
+	   The landing site sets this app-wide in utilities.css; the portal had
+	   only per-component focus styles (DomainCard trigger, Dispatch links),
+	   leaving the gate CTA, PortalHeader "Sign out", AppCard CTAs and the
+	   footer links with no visible keyboard focus. A single element-agnostic
+	   rule in the `utilities` layer (highest precedence over component styles)
+	   restores a consistent 2px focus ring on every focusable surface without
+	   sprinkling `:focus-visible` into each component. Components that need a
+	   tighter ring (e.g. DomainCard's inset trigger) still override locally. */
+	:focus-visible {
+		outline: 2px solid var(--color-interactive-primary);
+		outline-offset: 2px;
+	}
+}

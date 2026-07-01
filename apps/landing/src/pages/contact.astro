@@ -152,11 +152,22 @@ import Footer from "~/components/landing/Footer.astro";
 		font-weight: 700;
 		line-height: var(--leading-tight);
 		letter-spacing: var(--tracking-tight);
+		/* Fallback: visible text when background-clip:text is unsupported or
+		   disabled (forced-colors / high-contrast), where a transparent
+		   text-fill would otherwise render the title invisible. */
+		color: var(--color-text-primary);
 		background: var(--accent-gradient-text);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 		margin-bottom: var(--space-5);
+	}
+
+	@media (forced-colors: active) {
+		.contact-hero__title {
+			-webkit-text-fill-color: currentColor;
+			background: none;
+		}
 	}
 
 	/* ── Info Cards ── */

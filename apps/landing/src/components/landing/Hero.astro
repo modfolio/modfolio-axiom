@@ -67,9 +67,22 @@
 		font-weight: 700;
 		line-height: var(--leading-tight);
 		letter-spacing: var(--tracking-tight);
+		/* Fallback: visible text when background-clip:text is unsupported or
+		   disabled (forced-colors / high-contrast mode), where a transparent
+		   text-fill would otherwise render the H1 invisible. */
+		color: var(--color-text-primary);
 		background: var(--accent-gradient-text);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+	}
+
+	/* Forced-colors (Windows High Contrast): opt out of the gradient clip so
+	   the system assigns a real, high-contrast text colour to the heading. */
+	@media (forced-colors: active) {
+		.hero__heading {
+			-webkit-text-fill-color: currentColor;
+			background: none;
+		}
 	}
 </style>

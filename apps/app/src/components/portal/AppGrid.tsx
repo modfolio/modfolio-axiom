@@ -47,9 +47,11 @@ export const AppGrid = component$(() => {
 	`);
 
 	return (
-		<section class="apps">
+		<section class="apps" aria-labelledby="apps-heading">
 			<div class="apps__header">
-				<span class="apps__label">Applications</span>
+				<h2 id="apps-heading" class="apps__label">
+					Applications
+				</h2>
 				<span class="apps__count">{apps.length}</span>
 			</div>
 			<div class="apps__grid">

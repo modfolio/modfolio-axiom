@@ -35,8 +35,16 @@ export default component$(() => {
 				<meta name="twitter:title" content="Modfolio Axiom" />
 				<meta name="twitter:description" content="테크놀로지 & 모빌리티 그룹 포탈" />
 
+				{/* Font origins — warm both TCP+TLS connections before the
+				    render-blocking stylesheets. `crossorigin` is required on the
+				    Typekit preconnect: the font files it pulls are CORS requests,
+				    so a preconnect without it opens a second, unreused connection.
+				    Pretendard is served from jsDelivr, which had no preconnect —
+				    its stylesheet was blocking paint against a cold origin. */}
+				<link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+				<link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+
 				{/* Master Typekit (fmh4fod) */}
-				<link rel="preconnect" href="https://use.typekit.net" />
 				<link rel="stylesheet" href="https://use.typekit.net/fmh4fod.css" />
 
 				{/* Pretendard — Korean sans-serif fallback */}

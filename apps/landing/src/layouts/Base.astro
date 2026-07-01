@@ -30,6 +30,9 @@ const canonicalUrl = new URL(Astro.url.pathname, SITE).href;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+		{/* Pretendard ships from jsDelivr — warm the origin so its
+		    render-blocking stylesheet doesn't wait on a cold TCP+TLS handshake. */}
+		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 		<link rel="stylesheet" href="https://use.typekit.net/fmh4fod.css" />
 		<link
 			rel="stylesheet"

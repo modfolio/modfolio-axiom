@@ -9,6 +9,8 @@
 			"Bash(bun run check)",
 			"Bash(bun run typecheck)",
 			"Bash(bun run typecheck:*)",
+			"Bash(bun run test:*)",
+			"Bash(bun run test)",
 			"Bash(bun run quality:all)",
 			"Bash(bun run quality:*)",
 			"Bash(bun run lint)",
@@ -20,7 +22,6 @@
 			"Bash(bun run modfolio)",
 			"Bash(bun run modfolio:*)",
 			"Bash(bun run build.*)",
-			"Bash(bun run test:*)",
 			"Bash(bun run preview)",
 			"Bash(bun run preview:*)"
 		],

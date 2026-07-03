@@ -282,7 +282,7 @@ bun run check && bun run typecheck
 - **DB**: 없음 (하위 앱이 각자 DB 보유)
 - **인증**: modfolio-connect SSO (OIDC PKCE)
 - **도메인**: `axiom.modfolio.io`
-- **배포**: CF Pages (`modfolio-axiom`)
+- **배포**: CF Workers (`modfolio-axiom`)
 - **버전**: `0.1.0`
 
 ## 하위 앱

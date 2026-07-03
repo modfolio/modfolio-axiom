@@ -12,6 +12,10 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"incremental": true,
+		// TS6 no longer auto-includes @types beyond the project root reliably in
+		// this bun-isolated-store workspace — declare the bun ambient types
+		// (bun:test module declarations) explicitly.
+		"types": ["bun"],
 		"paths": {
 			"~/*": ["./src/*"]
 		}

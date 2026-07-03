@@ -1,9 +1,10 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		"baseUrl": ".",
+		// TS6: baseUrl is deprecated (TS5101). paths resolve relative to this
+		// tsconfig since TS 5.0 — baseUrl-free form is the migration target.
 		"paths": {
-			"~/*": ["src/*"]
+			"~/*": ["./src/*"]
 		}
 	}
 }

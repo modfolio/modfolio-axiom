@@ -6,7 +6,8 @@
 	],
 	"packageManager": "bun@1.2.4",
 	"overrides": {
-		"esbuild": "0.27.4"
+		"esbuild": "0.27.4",
+		"@biomejs/cli-linux-x64-musl": "npm:@biomejs/cli-linux-x64@2.5.2"
 	},
 	"scripts": {
 		"dev": "cd apps/app && bun run dev",
@@ -25,7 +26,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.2",
-		"@modfolio/harness": "^3.16.4"
+		"@modfolio/harness": "^3.16.6"
 	},
 	"dependencies": {
 		"@modfolio/connect-sdk": "^8.2.1",

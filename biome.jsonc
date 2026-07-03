@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git"
@@ -14,13 +14,33 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"preset": "recommended"
 		}
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
 		"lineWidth": 100
+	},
+	// Fleet baseline (harness 3.16.6 biome-excludes adoption — cleanup only
+	// patches biome.json, ported here manually for biome.jsonc): build output
+	// and harness runtime artifacts are not lint targets. vcs.enabled alone
+	// does not exclude untracked-but-present dist/ when running `biome check .`.
+	"files": {
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/dist",
+			// Qwik SSR build output (gitignored via bare `server` in .gitignore)
+			"!**/server",
+			"!**/.output",
+			"!**/.astro",
+			"!**/.wrangler",
+			"!**/worker-configuration.d.ts",
+			"!.claude/app-registry.json",
+			"!.claude/payment-approval.json",
+			"!**/migrations"
+		]
 	},
 	"javascript": {
 		"formatter": {

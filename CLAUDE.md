@@ -227,7 +227,7 @@ bun run check && bun run typecheck
 
 # Modfolio 생태계 컨텍스트
 
-> 이 섹션은 modfolio-ecosystem에서 자동 동기화됩니다. 직접 편집하지 마세요.
+> 자동 재생성 미러 — 이 구간의 수동 수정은 다음 pull 에서 사라진다. **이 repo 자신에 대한 사실은 repo 실측이 항상 우선** (canon `fact-ownership.md`, ADR-014). hub 기록 정정 요청은 `feedback-send`, 구간 보호는 `.claude/harness-lock.json` `lockedPaths`.
 
 # modfolio-ecosystem — Global Knowledge
 
@@ -268,7 +268,17 @@ bun run check && bun run typecheck
 | Modfolio Pay | 0.7.0-design-evolution | active |
 | Amberstella | 0.2.0-sso | landing |
 
+## 이 repo 실측 (pull 시점 로컬 판독 — hub 미경유)
+
+| Package | Version | Path |
+|---------|---------|------|
+| `modfolio-axiom` | ? | . |
+| `@modfolio-axiom/app` | ? | apps/app |
+| `@modfolio-axiom/landing` | ? | apps/landing |
+
 ## 프로젝트 지식
+
+> hub 미러(관측 기록) — 이 repo 자신에 대한 사실이 위 실측·repo 현실과 다르면 **실측이 옳다** (`fact-ownership.md`).
 
 # modfolio-axiom — 프로젝트 지식
 

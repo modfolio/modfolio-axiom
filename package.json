@@ -35,7 +35,7 @@
 		"@modfolio/harness": "^3.56.1"
 	},
 	"dependencies": {
-		"@modfolio/connect-sdk": "^9.5.0",
+		"@modfolio/connect-sdk": "^10.6.0",
 		"@modfolio/contracts": "^1.23.0"
 	}
 }

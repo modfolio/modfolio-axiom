@@ -12,6 +12,9 @@ export default component$(() => {
 	return (
 		<QwikCityProvider>
 			<head>
+					{/* v4 type — self-host. @font-face 는 fonts.css(생성물). */}
+					<link rel="stylesheet" href="/fonts.css" />
+
 				<meta charset="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>Modfolio Axiom</title>

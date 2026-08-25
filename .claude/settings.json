@@ -29,6 +29,8 @@
 			"Bash(bun run verify:*)",
 			"Bash(bun run heavy)",
 			"Bash(bun run heavy:*)",
+			"Bash(bun run atlas)",
+			"Bash(bun run atlas:*)",
 			"Bash(bun run build.*)",
 			"Bash(bun run preview)",
 			"Bash(bun run preview:*)"
@@ -74,6 +76,10 @@
 		"Stop": [
 			{
 				"hooks": [
+					{
+						"type": "command",
+						"command": "bun run \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-pattern-history.ts\""
+					},
 					{
 						"type": "command",
 						"command": "bun run \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-debrief-check.ts\""

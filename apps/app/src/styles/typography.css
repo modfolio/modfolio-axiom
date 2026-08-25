@@ -39,9 +39,9 @@
 	:root {
 		/* ── Font stacks ── */
 		--font-display: "Gambetta", "Goorm", "Pretendard", serif;
-		--font-body:"Gambetta", "Goorm", "Pretendard", serif;
-		--font-ui:"Switzer", "Goorm", "Pretendard", sans-serif;
-		--font-marketing:"Switzer", "Goorm", "Pretendard", sans-serif;
+		--font-body: "Gambetta", "Goorm", "Pretendard", serif;
+		--font-ui: "Switzer", "Goorm", "Pretendard", sans-serif;
+		--font-marketing: "Switzer", "Goorm", "Pretendard", sans-serif;
 		--font-mono: "Sligoil", "Goorm", "Pretendard", monospace;
 		--font-code: "Sligoil", "Goorm", "Pretendard", monospace;
 

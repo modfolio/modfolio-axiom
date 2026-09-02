@@ -1,7 +1,7 @@
 ---
 title: Opus Effort Policy (baseline Opus 5)
-version: 2.0.0
-last_updated: 2026-07-26
+version: 2.1.0
+last_updated: 2026-09-02
 source: [knowledge/canon/opus-4-7-effort-policy.md, platform.claude.com whats-new-opus-5 (1M default·thinking 기본 ON·effort 변환률·512 토큰 캐시 하한), code.claude.com model-config (effort 우선순위·모델 기본값 high·settings 는 max 거부·ultracode·[1m] 스트립), Frontier-Bench v0.1 (Opus 5 43.3 / Fable 5 33.7 / Opus 4.8 21.1), 2026-07-26 v2.0.0 (Opus 5 전환 + effort 상향 프로파일 — 오너 결정: 재작업 비용 > 토큰 비용; .mise.toml env-max 실사건 정정)]
 sync_to_siblings: true
 applicability: always
@@ -19,7 +19,7 @@ consumers: [preflight, plan, generate-review, modfolio, harness-evolve, claude-a
 | 티어 | 모델 ID | Context | 용도 |
 |------|---------|---------|------|
 | Baseline | `claude-opus-5` | **1,000,000** tokens | 코딩·리뷰·아키텍처 — **전 agent 기본** |
-| Frontier (opt-in) | `claude-fable-5` | 1,000,000 tokens | 추론형 최상단 전용 (`model-escalation.md` rung-3) |
+| Frontier (opt-in) | `claude-fable-5-1` | 1,000,000 tokens | 추론형 최상단 전용 (`model-escalation.md` rung-3). 2026-09-01 출시 · 세션이 이 모델이면 `.claude/rules/fable-5-1-behavior.md` |
 | Fast | `claude-haiku-4-5-20251001` | 200,000 tokens | 검색·요약·결정적 검증 (비용 효율) |
 | Fallback | `claude-sonnet-5` | 1,000,000 tokens | 429/529·과부하 시 자동 폴백 |
 
@@ -48,6 +48,8 @@ consumers: [preflight, plan, generate-review, modfolio, harness-evolve, claude-a
 - **#30726 / #40093 은 "버그"가 아닐 가능성이 높다.** Claude Code 문서: settings 파일의 `effortLevel` 은 **`low|medium|high|xhigh` 만** 받는다. `max` 와 `ultracode` 는 **세션 전용**이다. `~/.claude/settings.json` 에 `"effortLevel": "max"` 를 적으면 무효값이라 무시되고, 그게 "max 로 설정했는데 medium 으로 돈다"로 관측된다.
 - 올바른 처방: settings 는 **`xhigh`**, `max` 는 `/effort max` 또는 `--effort max` 세션 토글, env 는 **미설정**.
 - Opus 5 는 **model-default hold 가 없다** — Fable 5·Opus 4.8·4.7 은 첫 실행 시 모델 기본값을 강제로 잡고 명시 선택 전까지 유지하지만, Opus 5 는 이전에 설정한 레벨이 그대로 이어진다. 즉 settings 의 `xhigh` 가 깔끔하게 적용된다.
+- ⚠ **관측 상충 (2026-09-02)**: pdgd 가 Claude Code 2.1.258 에서 settings `"effortLevel":"max"` 인 세션의 전사록에 `"effort":"max"` 가 실린 것을 **1건** 관측했다. 허브 세션(2.1.255)은 settings `xhigh` · 전사록 `max` 라 **판정 불능**(세션 토글 `/effort max` 가 우선한 형태 — settings 수용 여부를 가르지 못한다). 재실측 = settings 를 `max` 로 두고 **새 세션**을 열어 전사록을 읽는 것. 그때까지 위 처방(settings `xhigh`)은 유지한다 — 거부돼도 해롭지 않고 수용돼도 xhigh 가 손해가 아니다.
+- **`max` 와 `ultracode` 는 한 세션에 같이 켜지지 않는다** (pdgd 2026-09-02 실측 — CLI 문자열 *"ultracode needs xhigh"* · ultracode 가동 알림 0건). ultracode 를 쓰려면 세션은 `xhigh`.
 
 ## 환경변수 정책 (전역 max 금지)
 

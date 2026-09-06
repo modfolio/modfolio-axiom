@@ -5,7 +5,7 @@
 		"advisoryId": 1120680,
 		"ghsa": "GHSA-g7r4-m6w7-qqqr",
 		"url": "https://github.com/advisories/GHSA-g7r4-m6w7-qqqr",
-		"why": "취약 범위(≥0.27.3 <0.28.1)의 사본은 esbuild@0.27.4 하나이고 요구자는 vite 7.3.x(`^0.27.0` — Qwik 앱의 vite 7 사슬). patched 0.28.1 은 그 범위 밖이라 갱신으로 못 가고, 평평한 `overrides.esbuild` 는 vite 8/astro/wrangler(0.28.1 exact) 까지 한 값으로 묶는다. advisory 는 esbuild 자체 개발 서버(`--serve`)의 파일 읽기이고 vite 는 esbuild 를 변환기로만 쓴다(서버는 vite 자신). 나갈 길은 Qwik 이 vite 8 로 가는 것.",
+		"why": "이 저장소의 기존 `overrides.esbuild = 0.27.4`(Qwik/vite 7 사슬 고정) 때문에 트리의 esbuild 사본이 0.27.4 하나다 — patched 0.28.1 로 가려면 그 override 를 올려야 하는데 vite 7(`^0.27.0`)이 0.28 을 허용하지 않고, override 를 지우면 vite 8/astro/wrangler(0.28.1 exact)와 vite 7 이 갈린다. advisory 는 esbuild 자체 개발 서버(`--serve`)의 파일 읽기이고 vite 는 esbuild 를 변환기로만 쓴다(서버는 vite 자신). 나갈 길은 Qwik 이 vite 8 로 가서 override 자체를 지우는 것.",
 		"upstream": "@builder.io/qwik — vite 8 지원 (vite 7 ^0.27 사슬 제거)",
 		"revisitAfter": "2026-11-06"
 	}

@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.12",
-		"@modfolio/harness": "^3.85.0"
+		"@modfolio/harness": "^3.85.1"
 	},
 	"dependencies": {
 		"@modfolio/connect-sdk": "^10.8.0",

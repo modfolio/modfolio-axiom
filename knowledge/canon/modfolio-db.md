@@ -1,8 +1,8 @@
 ---
 title: modfolio-db — Modfolio DB 시스템 (self-host 본진 · NAS mf-kr-1)
-version: 1.0.0
-last_updated: 2026-08-23
-source: [ADR-022 (2026-08-23 오너 승인, 외부 AI 검토 v1 반영), 2026-08-23 Neon API 전수 실측 + NAS 69 컨테이너 실측, 상세 설계서 modfolio_db_system_plan_2026-08-23.md]
+version: 2.0.0
+last_updated: 2026-09-16
+source: [ADR-022 (2026-08-23 오너 승인, 외부 AI 검토 v1 반영), **오너 결정 2026-09-16 (mfdb = 메인·프로덕션 · 모든 앱)**, 2026-08-23 Neon API 전수 실측 + NAS 69 컨테이너 실측, 2026-09-16 data:substrate 실측(24/14/10/0), 상세 설계서 modfolio_db_system_plan_2026-08-23.md]
 sync_to_siblings: true
 applicability: always
 consumers: [dev, ops, deploy, secret, new-app, preflight]
@@ -27,8 +27,74 @@ supersedes: []
 
 ## 한 줄
 
-**NAS(`mf-kr-1`)가 Modfolio DB 시스템의 본진이다.** dev 는 즉시, prod 는 앱별 게이트 통과 순.
-Neon 등 managed 는 스케일이 오면 **영역별로** 사는 escape route 다.
+**NAS(`mf-kr-1`)가 Modfolio DB 시스템의 본진이다 — dev 도 prod 도.** 목적지는 **모든 앱**이고,
+managed 는 회사 규모가 커졌을 때 여는 escape route 다.
+
+### ⚠ 2026-09-16 오너 결정이 이 줄의 기본값을 뒤집었다
+
+이 자리에는 원래 *"prod 는 앱별 게이트 통과 순. Neon 등 managed 는 스케일이 오면 영역별로 사는
+escape route 다"* 가 있었다. 즉 **managed 가 기본이고 self-host 가 선택**이었다. 오너가 반대로 정했다:
+
+> "DB는 mfdb를 메인이자 프로덕션으로 하고싶어. 무조건 모든앱. 우리가 자체적으로 구축하되
+> 나중에 회사규모가 커지만 그때 유료 클라우드 기반 서비스로 옮기는것도 가능하게 구축은 해두는거지"
+
+**무엇이 바뀌었고 무엇이 안 바뀌었나 — 이 구분이 전부다.**
+
+| | 전 | 후 |
+|---|---|---|
+| **결정** (갈지 말지) | 앱마다 판단 | **정해졌다 — 모든 앱이 간다** |
+| **경로** (어떻게 가나) | 아래 MUST 4 의 게이트들 | **그대로다** |
+
+게이트는 «갈지 말지»를 묻는 장치가 아니라 **«안전하게 도착했는가»를 재는 장치**다. 결정이
+내려졌다고 복원 drill 이나 PITR 이 면제되지 않는다. 순서가 바뀐 것뿐이다 —
+전에는 «게이트를 통과하면 갈 수도 있다», 지금은 «가기로 했으니 게이트를 통과시켜라».
+
+**이식성은 이미 갖춰져 있다 — 새로 만들 것이 없다.** 오너의 *"나중에 유료 클라우드로 옮기는
+것도 가능하게"* 는 **아래 MUST 3 이 그 구현이다**: 드라이버가 `@neondatabase/serverless` 로
+고정돼 있어 mfdb 프록시와 managed Neon 이 같은 wire protocol 을 쓴다. 옮기는 일은
+엔드포인트 교체이지 재작성이 아니다. 이 canon 을 읽고 «이식 계층을 만들어야겠다» 로 가지 말 것.
+
+**출발점 실측** (2026-09-16 `bun run data:substrate`): db 항목 **24** · managed **14** ·
+cf-native **10** · **self-hosted 0**. 오늘 mfdb 를 프로덕션으로 선언한 앱은 하나도 없다.
+이 결정은 24개 선언을 전부 움직인다.
+
+## 법 — 예외 없음 (오너, 2026-09-14 · 2026-09-16 재확인)
+
+> "DB는 mfdb를 메인이자 프로덕션으로 하고싶어. **무조건 모든앱.**"
+> "pay라고 할지라도 connect라고 할지라도 **내가 말하는게 MUST야.**"
+> "일단 사용자가 지금 10명도 안넘는데 **클라우드 서비스를 돈내고 쓰고 싶지는 않아.**
+> NAS를 활용해서 제대로 했으면 좋겠어."
+> (2026-09-14 pay 세션) "Neon쪽을 백업으로 두다가 나중에 사용자가 진짜 **몇백명**이 되면
+> 그때 neon을 유료로 사용하려고해"
+
+**금융(pay)·인증(connect) 예외는 없다.** 이 canon 의 옛 MUST 5 와 ADR-010a 4게이트의
+«금융·인증 아님» 전제는 **폐기**됐다. 오너 결정이 ADR 보다 위다 — ADR 은 그 결정을 기록하는 자리다.
+
+⚠ **이 문단은 두 번 늦었다.** 오너는 2026-09-14 에 뒤집었고 ADR-022 D3 이 2026-09-15 에
+기록했는데, **이 canon 의 MUST 5 는 옛 문장을 그대로 들고 있었다.** 2026-09-16 에 허브 세션이
+canon 만 읽고 ADR 을 안 봐서 «미해결 경계» 로 오판했고, 그 오판이 편지 3장으로 나갔다.
+→ 교훈은 규칙이 아니라 **배치**다: 뒤집힌 문장은 «주석을 달» 게 아니라 **지워야** 한다.
+살아 있는 옛 문장은 다음 사람이 그것을 현행으로 읽는다.
+
+### 되돌아보는 조건 (이 결정이 언제 재검토되나)
+
+**사용자 수백 명.** 그 전에는 managed 유료 전환을 제안하지 않는다 — 비용이 이 결정의 근거다.
+지금 사용자는 10명 미만이고, 그 사실이 바뀌면 그때 다시 잰다.
+
+### 세 부류 — 「모든 앱」이 실제로 뜻하는 것 (2026-09-16 제품 코드 실측)
+
+| 부류 | 수 | 이전 형태 | 비용 |
+|---|---|---|---|
+| **A. 이미 mfdb** | 4 | atelier-and-folio · modfolio-ecosystem · **modfolio-pay** · pdgd | 완료 |
+| **B. Neon DSN 만** | 8 | dle-desk · fortiscribe · gistcore · modfolio-press · naviaca · sincheong · visualize · worthee | **DSN 교체** — 드라이버 동일(MUST 3), 엔드포인트만 바뀐다 |
+| **C. D1 또는 DB 없음** | 11 | modfolio-connect · modfolio-admin · modfolio-sign · modfolio-notify · amberstella · keepnbuild · modfolio-dev · modfolio-on · muje · munseo · umbracast | **스키마 이전** — D1(SQLite) → PG. 방언·트랜잭션 의미론이 다르다 |
+
+**B 가 싼 이유가 곧 MUST 3 이 존재하는 이유다.** 드라이버를 `@neondatabase/serverless` 로
+고정해 뒀기 때문에 mfdb 프록시와 managed Neon 이 같은 wire protocol 을 쓴다 — 이전이
+엔드포인트 교체이지 재작성이 아니다. **C 는 그 보호를 못 받는다**(D1 은 다른 엔진이다).
+
+⚠ **C 를 B 처럼 견적 내지 않는다.** connect 는 소스 7,082 파일에 Neon 드라이버 참조가
+**0건**이다 — 순수 D1 이다. 「모든 앱」에 포함되지만 **일정은 A·B 와 다른 단위**다.
 
 ## 왜 (실측 2026-08-23)
 
@@ -47,11 +113,19 @@ pdgd 뿐이었다 — **전 repo 의 `bun run dev` 가 프로덕션 Neon 을 치
 3. **드라이버를 바꾸지 않는다** — `@neondatabase/serverless` 는 그대로. dev 는
    `neonConfig.fetchEndpoint`(mfdb 프록시) + `authToken` 만 설정한다. postgres-js 로 갈아타면
    dev 가 prod 와 다른 의미론(`db.batch()`·무트랜잭션)으로 돌아 dev-green/prod-red 가 된다
-4. **prod 이전은 게이트 통과 후** — ADR-010a 4게이트(금융·인증 아님 / 유료 사용자 0 /
-   **복원 drill 통과** / 무결성 요건) + canonical 은 PITR(pgBackRest+WAL) 필수 +
-   **Hyperdrive Compatibility Gate**(advisory lock·LISTEN/NOTIFY·요청 간 PREPARE·세션 SET
-   미사용) 통과. 이전은 각 repo 판단(Hub-not-enforcer)
-5. **금융(pay)·인증(connect D1)은 이동 금지** — `db-endpoints.md` 경계 그대로
+4. **prod 이전은 게이트 통과 후** — canonical 은 PITR(pgBackRest+WAL) 필수 +
+   **복원 drill 통과** + 무결성 요건 + **Hyperdrive Compatibility Gate**(advisory lock·
+   LISTEN/NOTIFY·요청 간 PREPARE·세션 SET 미사용).
+   ⚠ **게이트는 «갈지 말지» 를 묻지 않는다** — 목적지는 정해졌다(위 §법). 게이트가 묻는 것은
+   **«안전하게 도착했는가»** 뿐이고, 결정이 내려졌다고 면제되지 않는다. 각 repo 가 정하는 것은
+   **시점과 순서**다.
+   ⚠ ADR-010a 4게이트의 첫 항목 «금융·인증 아님» 은 **폐기**됐다. 금융·인증이라서 **더 엄격한**
+   drill·PITR·parity 를 요구하는 것이지, 제외 사유가 아니다. pay 가 그 형태를 이미 보여줬다
+   (이전 전후 `db:parity` «검사 17개 · 표 54개 전부 같다» · 2026-09-14).
+5. **경계는 유지된다 — 「한 인스턴스」가 「한 DB」가 아니다.** `db-endpoints.md` 의 격리 경계
+   (pay 결제 원장 · connect identity)는 **이전 뒤에도 그대로**다: 같은 `mfdb-postgres` 안에서
+   `CREATE DATABASE <repo> OWNER app_<repo>` + `REVOKE CONNECT … FROM PUBLIC`.
+   **DB-per-service 의 self-host 구현이지 통합 DB 가 아니다.** 옮긴다고 합치지 않는다.
 
 ## 구조 (요약 — 전문 ADR-022)
 

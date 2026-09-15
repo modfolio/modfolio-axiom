@@ -56,6 +56,13 @@ export const FINGERPRINT_EXCLUDE = [
 	// 러너가 매 실행 뒤에 쓰는 소요 이력 — `.gitignore` 안 된 멤버에서 `gate:quick` 한 번이
 	// 영수증을 무효화하지 않도록 정체에서 뺀다(`TIMINGS_RELPATH` 와 같은 값 · 테스트가 잠근다).
 	".claude/gate-timings.json",
+	// ── 허브 트리에 **다른 프로세스**가 쓰는 기록 (2026-09-15 실측 — 게이트 507초 동안 형제의 pull 이
+	//    `feedback/modfolio-admin/pull-manifest.json` 을, 전파의 Writ 가 `memory/orbit/*` 를 바꿔 영수증이 죽었다).
+	//    셋 다 quick/full tier 34단계 중 어느 스크립트도 읽지 않는다(`gate-receipt.test.ts` 가 grep 으로 잠근다).
+	//    ⚠ `scripts/knowledge/.rag-manifest.json` 은 `push-judgment-gate.ts`(full) 가 읽으므로 **제외하지 않는다.**
+	"**/pull-manifest.json", // 멤버 harness-pull 이 허브 sink 에 남기는 보고 — 허브의 산출물이 아니다
+	"memory/orbit/", // Orbit Writ 원장(current.json · writ-audit.jsonl) — 전파가 repo 마다 쓴다
+	"knowledge/playbooks/", // Muse 코퍼스 카운터 — Stop 훅이 매 턴 갱신한다 (release tier 만 읽는다)
 ] as const;
 
 export interface GateReceipt {
@@ -78,19 +85,37 @@ function git(root: string, args: string[]): string {
 }
 
 /**
- * 제외 항목의 세 형태: `dir/`(디렉터리 접두) · `…-`(파일명 접두 — 멤버 원장 `plans/modfolio-nonstop-*`) ·
- * 그 밖(정확히 그 파일). ⚠ 초판은 접두형을 정확 일치로 읽어 멤버 원장이 **한 번도 제외되지 않았다.**
+ * 제외 항목의 네 형태: `dir/`(디렉터리 접두) · `…-`(파일명 접두 — 멤버 원장 `plans/modfolio-nonstop-*`) ·
+ * `**\/name`(어느 깊이든 그 파일명) · 그 밖(정확히 그 파일).
+ * ⚠ 초판은 접두형을 정확 일치로 읽어 멤버 원장이 **한 번도 제외되지 않았다.**
  */
 export function isExcluded(path: string): boolean {
-	return FINGERPRINT_EXCLUDE.some((p) =>
-		p.endsWith("/") || p.endsWith("-") ? path.startsWith(p) : path === p,
+	return FINGERPRINT_EXCLUDE.some((p) => {
+		if (p.startsWith("**/")) {
+			const base = p.slice(3);
+			return path === base || path.endsWith(`/${base}`);
+		}
+		return p.endsWith("/") || p.endsWith("-") ? path.startsWith(p) : path === p;
+	});
+}
+
+/** 같은 네 형태를 git pathspec 으로 (`**\/` 형태는 glob 매직이 필요하다). */
+function excludePathspecs(): string[] {
+	return FINGERPRINT_EXCLUDE.map((p) =>
+		p.startsWith("**/")
+			? `:(glob)${p}`
+			: p.endsWith("/")
+				? `${p}**`
+				: p.endsWith("-")
+					? `${p}*`
+					: p,
 	);
 }
 
-/** 같은 세 형태를 git pathspec 으로. */
-function excludePathspecs(): string[] {
-	return FINGERPRINT_EXCLUDE.map((p) =>
-		p.endsWith("/") ? `${p}**` : p.endsWith("-") ? `${p}*` : p,
+/** `add -A` 의 제외 pathspec — glob 매직이 붙은 항목은 `:(exclude,glob)` 로 합친다. */
+function addExcludePathspecs(): string[] {
+	return excludePathspecs().map((p) =>
+		p.startsWith(":(glob)") ? `:(exclude,glob)${p.slice(":(glob)".length)}` : `:(exclude)${p}`,
 	);
 }
 
@@ -125,7 +150,7 @@ export function contentTree(root: string): string {
 		// 제외 경로는 정체에서 **뺀다** — HEAD 에 있어도, 워킹트리에 있어도. 안 빼면 커밋으로
 		// HEAD 에 들어간 원장이 다음 push 의 트리를 바꾼다.
 		g(["rm", "-r", "--cached", "-q", "--ignore-unmatch", "--", ...excludePathspecs()]);
-		g(["add", "-A", "--", ".", ...excludePathspecs().map((p) => `:(exclude)${p}`)]);
+		g(["add", "-A", "--", ".", ...addExcludePathspecs()]);
 		const tree = g(["write-tree"]);
 		return tree.status === 0 ? tree.stdout.trim() : "";
 	} finally {

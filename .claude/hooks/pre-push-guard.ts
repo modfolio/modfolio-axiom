@@ -76,7 +76,7 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { contentTree, judgeReceipt, readReceipt } from "../lib/gate-receipt.ts";
 import {
@@ -110,7 +110,43 @@ const cmd = bashCommand(input);
 if (import.meta.main) {
 	if (!cmd || !/\bgit\s+push\b/i.test(cmd)) process.exit(EXIT_GREEN);
 
-	const projectRoot = process.cwd();
+	/**
+	 * 이 훅이 읽는 모든 것 — `package.json` 의 게이트 스크립트, `.claude/harness-lock.json`,
+	 * `.claude/settings*.json` 의 timeout, **그리고 완주 영수증** — 은 이 한 경로에 달려 있다.
+	 *
+	 * ⚠ 예전에는 `process.cwd()` 한 줄이었다. 지금 배선(`bun run "$CLAUDE_PROJECT_DIR/…"`)
+	 * 에서는 맞게 돈다 — 허브 push 훅이 실제로 복합 명령을 막은 실측이 있다. 문제는
+	 * **틀렸을 때 그렇게 말하지 않는다는 것**이다: 엉뚱한 루트를 잡으면 `package.json` 이
+	 * 없어 `steps.length === 0` → 판정 불능(비차단)으로 빠지거나, 영수증이 없어 «게이트를
+	 * 안 돌렸다» 로 보인다. 둘 다 **push 를 통과시키는 방향**이고 아무도 원인을 못 본다.
+	 *
+	 * 훅 19개 중 14개가 이미 `CLAUDE_PROJECT_DIR`/`gitRoot()` 로 정박한다(2026-09-16 실측).
+	 * 여기도 맞춘다: 명시 신호 → git 최상위 → **판정 불능**. cwd 추측으로 끝내지 않는다.
+	 */
+	function resolveProjectRoot(): string | undefined {
+		const declared = process.env.CLAUDE_PROJECT_DIR;
+		if (declared && declared.length > 0 && existsSync(join(declared, "package.json"))) {
+			return declared;
+		}
+		const top = spawnSync("git", ["rev-parse", "--show-toplevel"], {
+			encoding: "utf-8",
+			stdio: ["ignore", "pipe", "ignore"],
+		});
+		const root = top.status === 0 ? (top.stdout ?? "").trim() : "";
+		if (root.length > 0 && existsSync(join(root, "package.json"))) return root;
+		return undefined;
+	}
+
+	const resolvedRoot = resolveProjectRoot();
+	if (resolvedRoot === undefined) {
+		console.error(
+			"[pre-push-guard] ⚠ 판정 불능 — 프로젝트 루트를 정하지 못했다 " +
+				"(CLAUDE_PROJECT_DIR 도, git 최상위도 package.json 을 갖고 있지 않다). " +
+				"cwd 를 추측해서 영수증을 읽지 않는다 — 잘못 읽으면 통과로 보인다. push 는 진행(비차단).",
+		);
+		process.exit(EXIT_INDETERMINATE);
+	}
+	const projectRoot: string = resolvedRoot;
 
 	function readJsonSafe(path: string): unknown {
 		try {
